@@ -1,6 +1,6 @@
 # tugasAkhir
 
 # Kelompok 
-# Wahyu Bagus Wicaksono
-# Aziz Sulaiman
-# Reyjuna Alfikly Firmansyah
+1.Wahyu Bagus Wicaksono
+2.Aziz Sulaiman
+3.Reyjuna Alfikly Firmansyah
