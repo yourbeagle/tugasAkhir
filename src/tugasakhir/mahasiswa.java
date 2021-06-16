@@ -7,14 +7,14 @@ package tugasakhir;
 
 /**
  *
- * @author mainw
+ * @author Realfi
  */
-public class TugasAkhirGui extends javax.swing.JFrame {
+public class mahasiswa extends javax.swing.JFrame {
 
     /**
-     * Creates new form TugasAkhirGui
+     * Creates new form mahasiswa
      */
-    public TugasAkhirGui() {
+    public mahasiswa() {
         initComponents();
     }
 
@@ -60,20 +60,20 @@ public class TugasAkhirGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TugasAkhirGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TugasAkhirGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TugasAkhirGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TugasAkhirGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TugasAkhirGui().setVisible(true);
+                new mahasiswa().setVisible(true);
             }
         });
     }
