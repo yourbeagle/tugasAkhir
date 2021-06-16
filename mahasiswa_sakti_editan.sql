@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `dosen` (
-  `NIP` varchar(55) NOT NULL, txt
+  `NIP` varchar(55) NOT NULL, txt boi
   `NIDN` varchar(55) DEFAULT NULL, txt
   `nmDosen` varchar(55) DEFAULT NULL,txt
   `almtDosen` varchar(55) DEFAULT NULL,txt
