@@ -62,20 +62,24 @@ CREATE TABLE `kelas` (
 --
 
 CREATE TABLE `mahasiswa` (
-  `nrp` varchar(55) NOT NULL,txt
-  `nama_mahasiswa` varchar(55) DEFAULT NULL,txt
-  `prodi` varchar(55) DEFAULT NULL,cb
-  `Status` varchar(55) DEFAULT NULL,centang
+  
   `JK` varchar(55) DEFAULT NULL, rd
   `agama` varchar(55) DEFAULT NULL,cb
   `alamat` varchar(55) DEFAULT NULL,txt
   `email` varchar(55) DEFAULT NULL,txt
   `notelp` varchar(55) DEFAULT NULL,txt
+  `nama_mahasiswa` varchar(55) DEFAULT NULL,txt
+  
+  `nrp` varchar(55) NOT NULL,txt
+  `prodi` varchar(55) DEFAULT NULL,cb
+  `Status` varchar(55) DEFAULT NULL,centang
+
   `namaAyah` varchar(55) DEFAULT NULL,txt
   `noKTPAyah` varchar(55) DEFAULT NULL,txt
   `namaIbu` varchar(55) DEFAULT NULL,txt
   `noTelpOrtu` varchar(55) DEFAULT NULL,txt
   `almtOrtu` varchar(55) DEFAULT NULL,txt
+
   `photopath` varchar(55) DEFAULT NULL, image
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
