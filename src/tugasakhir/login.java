@@ -166,10 +166,13 @@ ResultSet rs;
             rs = pst.executeQuery();
             if (rs.next())
             {
+                String name = rs.getString("nmAdmin");
                 JOptionPane.showMessageDialog(null, "Berhasil Login");
                 this.dispose();
-                mahasiswa mhw = new mahasiswa();
-                mhw.setVisible(true);
+                landingpage lp = new landingpage();
+                landingpage.lbUser.setText(name);
+                landingpage.lbUser.setVisible(false);
+                lp.setVisible(true);
                 
             }
             else
