@@ -230,6 +230,13 @@ ResultSet rs;
         lp.setVisible(true);
     }//GEN-LAST:event_mnLogoutMouseClicked
 
+    private void mnMhwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMhwMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        mahasiswa mhw = new mahasiswa();
+        mhw.setVisible(true);
+    }//GEN-LAST:event_mnMhwMouseClicked
+
     
     /**
      * @param args the command line arguments
