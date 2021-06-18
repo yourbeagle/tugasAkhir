@@ -99,11 +99,9 @@ ResultSet rs;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(105, 105, 105))
+                    .addComponent(jLabel8)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(24, 24, 24))
         );
@@ -136,21 +134,46 @@ ResultSet rs;
 
         mnMhw.setBackground(new java.awt.Color(255, 168, 82));
         mnMhw.setText("Mahasiswa");
+        mnMhw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnMhwMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(mnMhw);
 
         mnKelas.setBackground(new java.awt.Color(255, 168, 82));
         mnKelas.setText("Kelas");
+        mnKelas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnKelasMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(mnKelas);
 
         mnDosen.setBackground(new java.awt.Color(255, 168, 82));
         mnDosen.setText("Dosen");
+        mnDosen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnDosenMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(mnDosen);
 
         mnMatakuliah.setBackground(new java.awt.Color(255, 168, 82));
         mnMatakuliah.setText("Matakuliah");
+        mnMatakuliah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnMatakuliahMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(mnMatakuliah);
 
         mnLogout.setText("Logout");
+        mnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnLogoutMouseClicked(evt);
+            }
+        });
         jMenuBar2.add(mnLogout);
 
         setJMenuBar(jMenuBar2);
@@ -175,6 +198,37 @@ ResultSet rs;
         // TODO add your handling code here:
         ceklogin();
     }//GEN-LAST:event_formWindowActivated
+
+    private void mnMhwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMhwMouseClicked
+        this.dispose();
+        mahasiswa lp = new mahasiswa();
+        lp.setVisible(true);
+    }//GEN-LAST:event_mnMhwMouseClicked
+
+    private void mnKelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnKelasMouseClicked
+        this.dispose();
+        Kelas lp = new Kelas();
+        lp.setVisible(true);
+    }//GEN-LAST:event_mnKelasMouseClicked
+
+    private void mnDosenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnDosenMouseClicked
+        this.dispose();
+        dosen lp = new dosen();
+        lp.setVisible(true);
+    }//GEN-LAST:event_mnDosenMouseClicked
+
+    private void mnMatakuliahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMatakuliahMouseClicked
+        this.dispose();
+        matakuliah lp = new matakuliah();
+        lp.setVisible(true);
+    }//GEN-LAST:event_mnMatakuliahMouseClicked
+
+    private void mnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnLogoutMouseClicked
+        this.dispose();
+        lbUser.setText("");
+        login lp = new login();
+        lp.setVisible(true);
+    }//GEN-LAST:event_mnLogoutMouseClicked
 
     
     /**
