@@ -42,7 +42,7 @@ ResultSet rs;
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        mnMhw = new javax.swing.JMenu();
+        mnMhwa = new javax.swing.JMenu();
         mnKelas = new javax.swing.JMenu();
         mnDosen = new javax.swing.JMenu();
         mnMatakuliah = new javax.swing.JMenu();
@@ -132,14 +132,14 @@ ResultSet rs;
         jMenuBar2.setBackground(new java.awt.Color(255, 168, 82));
         jMenuBar2.setForeground(new java.awt.Color(255, 168, 82));
 
-        mnMhw.setBackground(new java.awt.Color(255, 168, 82));
-        mnMhw.setText("Mahasiswa");
-        mnMhw.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnMhwa.setBackground(new java.awt.Color(255, 168, 82));
+        mnMhwa.setText("Mahasiswa");
+        mnMhwa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnMhwMouseClicked(evt);
+                mnMhwaMouseClicked(evt);
             }
         });
-        jMenuBar2.add(mnMhw);
+        jMenuBar2.add(mnMhwa);
 
         mnKelas.setBackground(new java.awt.Color(255, 168, 82));
         mnKelas.setText("Kelas");
@@ -199,11 +199,11 @@ ResultSet rs;
         ceklogin();
     }//GEN-LAST:event_formWindowActivated
 
-    private void mnMhwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMhwMouseClicked
+    private void mnMhwMouseClicked(java.awt.event.MouseEvent evt) {                                   
         this.dispose();
         mahasiswa lp = new mahasiswa();
         lp.setVisible(true);
-    }//GEN-LAST:event_mnMhwMouseClicked
+    }                                  
 
     private void mnKelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnKelasMouseClicked
         this.dispose();
@@ -230,12 +230,12 @@ ResultSet rs;
         lp.setVisible(true);
     }//GEN-LAST:event_mnLogoutMouseClicked
 
-    private void mnMhwMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMhwMouseClicked
+    private void mnMhwaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnMhwaMouseClicked
         // TODO add your handling code here:
         this.dispose();
         mahasiswa mhw = new mahasiswa();
         mhw.setVisible(true);
-    }//GEN-LAST:event_mnMhwMouseClicked
+    }//GEN-LAST:event_mnMhwaMouseClicked
 
     
     /**
@@ -311,6 +311,6 @@ ResultSet rs;
     private javax.swing.JMenu mnKelas;
     private javax.swing.JMenu mnLogout;
     private javax.swing.JMenu mnMatakuliah;
-    private javax.swing.JMenu mnMhw;
+    private javax.swing.JMenu mnMhwa;
     // End of variables declaration//GEN-END:variables
 }
