@@ -53,28 +53,6 @@ public class dosen extends javax.swing.JFrame {
         }catch(Exception e){
         }
     }
-     
-     private void edit()
-    {
-        String sql = "select * from dosen where NIP=?";
-        try {
-            con = config.configDB();
-            pst = con.prepareStatement(sql);
-            String nipEdit = txnip.getText();
-            pst.setString(1, nipEdit);
-            rs = pst.executeQuery();
-            if(rs.next())
-            {
-                btnedit.setEnabled(true);
-                
-            }
-            else{
-                btnedit.setEnabled(false);
-                
-            }
-        } catch (Exception e) {
-        }
-    }
     /**
      * Creates new form dosen
      */
@@ -680,8 +658,7 @@ public class dosen extends javax.swing.JFrame {
         telpon = txtelepon.getText();
         email = txemail.getText();
         alamat = txalamat.getText();
-        if (rdlaki.isSelected())
-        {
+        if (rdlaki.isSelected()){
             jk = "Laki - Laki";
         }
         if (rdperempuan.isSelected()) {
@@ -697,16 +674,14 @@ public class dosen extends javax.swing.JFrame {
         nidn = txnidn.getText();
         pendidikan = txpend.getText();
         status = "";
-        if (cbstatus.isSelected())
-        {
+        if (cbstatus.isSelected()){
             status+=cbstatus.getText()+"";
         }
-        else
-        {
+        else{
             status+="Tidak Aktif";
         }
         jabatan = cbja.getSelectedItem().toString();
-        edit();
+     
         String sql="insert into dosen(nip,nidn,nmdosen,almtdosen,notelp,email,jk,ttl,statuspegawai,pendidikan,jabatanakdmk) values (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             con = config.configDB();
