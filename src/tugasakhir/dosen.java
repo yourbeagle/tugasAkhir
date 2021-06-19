@@ -941,32 +941,6 @@ public class dosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-               txnip.setText(nip);
-        txnidn.setText(nidn);
-        txnama.setText(nama);
-        txalamat.setText(alamat);
-        txemail.setText(email);
-        txtelepon.setText(telpon);
-        if(jk.equals("Laki - Laki"))
-        {
-            rdlaki.setSelected(true);
-        }
-        if (jk.equals("Perempuan"))
-        {
-            rdperempuan.setSelected(true);
-        }
-        txttl.setText(ttl);
-        if (status.equals("Aktif"))
-        {
-            cbstatus.setSelected(true);
-        }
-        else
-        {
-            cbstatus.setSelected(false);
-        }
-        txpend.setText(pendidikan);
-        cbja.setSelectedItem(jabatan);
-     
         String sql="Update dosen SET nidn=?,nmdosen=?,almtdosen=?,notelp=?,email=?,JK=?,ttl=?,statusPegawai=?,pendidikan=?,jabatanAkdmk=? Where NIP =?";
         try {
             con = config.configDB();
