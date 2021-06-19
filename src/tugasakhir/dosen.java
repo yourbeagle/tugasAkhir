@@ -124,6 +124,7 @@ public class dosen extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -212,23 +213,17 @@ public class dosen extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Menu Utama");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuutamaLayout = new javax.swing.GroupLayout(menuutama);
         menuutama.setLayout(menuutamaLayout);
         menuutamaLayout.setHorizontalGroup(
             menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuutamaLayout.createSequentialGroup()
-                .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel24))
-                    .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(354, 354, 354)
-                        .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25)
-                            .addGroup(menuutamaLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuutamaLayout.createSequentialGroup()
                 .addContainerGap(204, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,6 +232,21 @@ public class dosen extends javax.swing.JFrame {
                 .addGap(132, 132, 132)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(258, 258, 258))
+            .addGroup(menuutamaLayout.createSequentialGroup()
+                .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuutamaLayout.createSequentialGroup()
+                        .addGap(354, 354, 354)
+                        .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addGroup(menuutamaLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(menuutamaLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuutamaLayout.setVerticalGroup(
             menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +262,9 @@ public class dosen extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         root.add(menuutama, "menuutama");
@@ -987,6 +999,13 @@ public class dosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+         this.dispose();
+        landingpage lp = new landingpage();
+        lp.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1040,6 +1059,7 @@ public class dosen extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
