@@ -665,7 +665,7 @@ ResultSet rs;
     }//GEN-LAST:event_btHapuss1ActionPerformed
 
     private void btHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapus1ActionPerformed
-      //  this.dispose();
+        this.dispose();
         landingpage lp = new landingpage();
         lp.setVisible(true);
     }//GEN-LAST:event_btHapus1ActionPerformed
