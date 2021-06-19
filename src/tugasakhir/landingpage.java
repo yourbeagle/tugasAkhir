@@ -197,7 +197,7 @@ ResultSet rs;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         ceklogin();
-    }//GEN-LAST:event_formWindowActivated                                
+    }//GEN-LAST:event_formWindowActivated
 
     private void mnKelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnKelasMouseClicked
         this.dispose();

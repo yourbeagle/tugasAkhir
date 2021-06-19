@@ -5,9 +5,15 @@
  */
 package tugasakhir;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
 import java.sql.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.io.FileUtils;
 /**
  *
  * @author Realfi
@@ -18,6 +24,8 @@ Connection con;
 PreparedStatement pst;
 Statement stm;
 ResultSet rs;
+JFileChooser jfc;
+File file;
     /**
      * Creates new form mahasiswa
      */
@@ -41,9 +49,9 @@ ResultSet rs;
         menutama = new javax.swing.JPanel();
         btnInput = new javax.swing.JButton();
         btnEditLp = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        btnHapusLp = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,6 +69,7 @@ ResultSet rs;
         cbAgama = new javax.swing.JComboBox<>();
         txtPhone = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
+        btnBackInput = new javax.swing.JButton();
         Step2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -90,23 +99,28 @@ ResultSet rs;
         Step4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         txtfileTest = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
         btnBackS4 = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
+        lbImage = new javax.swing.JLabel();
+        btnPilih = new javax.swing.JButton();
         MilihEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMahasiswa = new javax.swing.JTable();
         jLabel27 = new javax.swing.JLabel();
         btnLanjut = new javax.swing.JButton();
+        lbImgEdit = new javax.swing.JLabel();
+        btnBackEdit = new javax.swing.JButton();
         Hapus = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
+        tbMahasiswaHps = new javax.swing.JTable();
+        btnHapus = new javax.swing.JButton();
+        lbImgHps = new javax.swing.JLabel();
+        btnBackHps = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -133,12 +147,17 @@ ResultSet rs;
             }
         });
 
-        jButton3.setText("Hapus");
-
         jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel24.setText("Welcome, Silakan Pilih ");
 
         jLabel25.setText("IKI digae card opo menu bar ae?");
+
+        btnHapusLp.setText("Hapus");
+        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusLpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
         menutama.setLayout(menutamaLayout);
@@ -152,14 +171,14 @@ ResultSet rs;
                         .addGap(18, 18, 18)
                         .addComponent(btnEditLp)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menutamaLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel24))
                     .addGroup(menutamaLayout.createSequentialGroup()
                         .addGap(329, 329, 329)
                         .addComponent(jLabel25)))
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
         );
         menutamaLayout.setVerticalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,10 +189,10 @@ ResultSet rs;
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInput)
                     .addComponent(btnEditLp)
-                    .addComponent(jButton3))
+                    .addComponent(btnHapusLp))
                 .addGap(113, 113, 113)
                 .addComponent(jLabel25)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         root.add(menutama, "menuUtama");
@@ -233,6 +252,13 @@ ResultSet rs;
             }
         });
 
+        btnBackInput.setText("Kembali");
+        btnBackInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackInputActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Step1Layout = new javax.swing.GroupLayout(Step1);
         Step1.setLayout(Step1Layout);
         Step1Layout.setHorizontalGroup(
@@ -242,49 +268,46 @@ ResultSet rs;
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Step1Layout.createSequentialGroup()
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
+                                .addGap(0, 29, Short.MAX_VALUE)
+                                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(170, 170, 170))
                             .addGroup(Step1Layout.createSequentialGroup()
                                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
                                     .addGroup(Step1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel2)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(99, 99, 99)))
-                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(Step1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(rdLk)
-                                .addGap(76, 76, 76)
-                                .addComponent(rdPr)))
-                        .addContainerGap(172, Short.MAX_VALUE))
+                                        .addComponent(jLabel2))
+                                    .addComponent(jLabel1))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(453, Short.MAX_VALUE))
                     .addGroup(Step1Layout.createSequentialGroup()
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5))
-                        .addGap(291, 291, 291)
-                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Step1Layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
+                                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(99, 99, 99))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
                                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel6)
-                                    .addGroup(Step1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(btnBackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5))
+                                .addGap(346, 346, 346)))
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
                             .addGroup(Step1Layout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(cbAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addGroup(Step1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(11, 11, 11)
+                                .addComponent(rdLk)
+                                .addGap(39, 39, 39)
+                                .addComponent(rdPr))
+                            .addGroup(Step1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,44 +316,52 @@ ResultSet rs;
         Step1Layout.setVerticalGroup(
             Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Step1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(26, 26, 26)
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Step1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(17, 17, 17)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdLk)
                             .addComponent(rdPr)))
                     .addGroup(Step1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
                         .addComponent(jLabel1)
-                        .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addGroup(Step1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail))
+                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail)
+                    .addGroup(Step1Layout.createSequentialGroup()
+                        .addComponent(cbAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Step1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Step1Layout.createSequentialGroup()
-                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(Step1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         root.add(Step1, "step1");
@@ -405,7 +436,7 @@ ResultSet rs;
                             .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNrp, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step2Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(btnBackS2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -517,7 +548,7 @@ ResultSet rs;
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel17)
                                     .addComponent(txtPhoneOrtu, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(87, Short.MAX_VALUE))
+                        .addContainerGap(178, Short.MAX_VALUE))
                     .addGroup(Step3Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(btnBackS3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -568,9 +599,6 @@ ResultSet rs;
         jLabel22.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel22.setText("- Step 4 of 4");
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel23.setText("aku raruh input file ki pie dadi tak kosongi sek :>");
-
         txtfileTest.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -596,6 +624,15 @@ ResultSet rs;
             }
         });
 
+        lbImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+
+        btnPilih.setText("Pilih");
+        btnPilih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPilihActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Step4Layout = new javax.swing.GroupLayout(Step4);
         Step4.setLayout(Step4Layout);
         Step4Layout.setHorizontalGroup(
@@ -603,7 +640,7 @@ ResultSet rs;
             .addGroup(Step4Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(btnBackS4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 532, Short.MAX_VALUE)
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -616,12 +653,14 @@ ResultSet rs;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22))
                     .addGroup(Step4Layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jLabel23))
-                    .addGroup(Step4Layout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addComponent(txtfileTest, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(323, Short.MAX_VALUE))
+                        .addGap(238, 238, 238)
+                        .addGroup(Step4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(Step4Layout.createSequentialGroup()
+                                .addComponent(txtfileTest, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPilih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Step4Layout.setVerticalGroup(
             Step4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -630,11 +669,13 @@ ResultSet rs;
                 .addGroup(Step4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel21))
-                .addGap(81, 81, 81)
-                .addComponent(jLabel23)
-                .addGap(41, 41, 41)
-                .addComponent(txtfileTest, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(lbImage, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Step4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtfileTest, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPilih, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(Step4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBackS4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -675,23 +716,35 @@ ResultSet rs;
             }
         });
 
+        lbImgEdit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+
+        btnBackEdit.setText("Back");
+        btnBackEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MilihEditLayout = new javax.swing.GroupLayout(MilihEdit);
         MilihEdit.setLayout(MilihEditLayout);
         MilihEditLayout.setHorizontalGroup(
             MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MilihEditLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
             .addGroup(MilihEditLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(MilihEditLayout.createSequentialGroup()
+                        .addComponent(btnBackEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MilihEditLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel27))
-                    .addComponent(jLabel26))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jLabel26)
+                    .addGroup(MilihEditLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbImgEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         MilihEditLayout.setVerticalGroup(
             MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,10 +754,14 @@ ResultSet rs;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbImgEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         root.add(MilihEdit, "milihEdit");
@@ -715,7 +772,7 @@ ResultSet rs;
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Pilih Data");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbMahasiswaHps.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -726,27 +783,51 @@ ResultSet rs;
                 "NRP", "Nama", "Agama", "Jenis Kelamin", "Alamat", "Email", "Nomer Hp", "Prodi", "Status", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tbMahasiswaHps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbMahasiswaHpsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbMahasiswaHps);
 
-        jButton6.setText("Hapus");
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        lbImgHps.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+
+        btnBackHps.setText("Kembali");
+        btnBackHps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackHpsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HapusLayout = new javax.swing.GroupLayout(Hapus);
         Hapus.setLayout(HapusLayout);
         HapusLayout.setHorizontalGroup(
             HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HapusLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HapusLayout.createSequentialGroup()
-                        .addGap(714, 714, 714)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(HapusLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(46, 46, 46)
                         .addComponent(jLabel29))
-                    .addComponent(jLabel28))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addGroup(HapusLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(HapusLayout.createSequentialGroup()
+                                .addComponent(btnBackHps, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel28)
+                            .addGroup(HapusLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbImgHps, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         HapusLayout.setVerticalGroup(
             HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -756,9 +837,13 @@ ResultSet rs;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbImgHps, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackHps, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -819,6 +904,7 @@ ResultSet rs;
                 );
             }
             tbMahasiswa.setModel(model);
+            tbMahasiswaHps.setModel(model);
         }
         catch(Exception e)
         {
@@ -838,11 +924,11 @@ ResultSet rs;
             if(rs.next())
             {
                 btnEdit.setEnabled(true);
-                
+                btnSubmit.setEnabled(false);
             }
             else{
                 btnEdit.setEnabled(false);
-                
+                btnSubmit.setEnabled(true);
             }
         } catch (Exception e) {
         }
@@ -865,7 +951,25 @@ ResultSet rs;
         agama = cbAgama.getSelectedItem().toString();
         notelp = txtPhone.getText();
         cl.show(root, "step2");
-        
+        String sql = "select nrp from mahasiswa";
+        try {
+            con = config.configDB();
+            stm = con.createStatement();
+            rs = stm.executeQuery(sql);
+            if (rs.next())
+            {
+                if(txtNrp.getText().equals(rs.getString(1))&& txtNrp.getText() != "")
+                {
+                    txtNrp.setEditable(false);
+                }
+                else
+                {
+                    txtNrp.setEditable(true);
+                }
+            }
+           
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void cbProdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdiActionPerformed
@@ -939,6 +1043,16 @@ ResultSet rs;
         notelpOrtu = txtPhoneOrtu.getText();
         alamatOrtu = txtAlamatOrtu.getText();
         edit();
+        try {
+            Toolkit toolkit=Toolkit.getDefaultToolkit();
+
+            String path=new File(".").getCanonicalPath();
+            Image image=toolkit.getImage(path+"/image/"+photoname); 
+            Image imagedResized=image.getScaledInstance(lbImage.getWidth(), lbImage.getHeight(), Image.SCALE_DEFAULT);
+            ImageIcon icon=new ImageIcon(imagedResized);
+            lbImage.setIcon(icon); 
+        } catch (Exception e) {
+        }
         cl.show(root, "step4");
     }//GEN-LAST:event_btnNextS3ActionPerformed
 
@@ -957,6 +1071,7 @@ ResultSet rs;
         // TODO add your handling code here:
         String sql="insert into mahasiswa(nrp,nama_mahasiswa,prodi,status,jk,agama,alamat,email,notelp,namaayah,noktpayah,namaibu,notelportu,almtortu,photopath) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
+            CardLayout cl = (CardLayout) root.getLayout();
             con = config.configDB();
             pst = con.prepareStatement(sql);
             pst.setString(1, nrp);
@@ -976,6 +1091,12 @@ ResultSet rs;
             pst.setString(15, txtfileTest.getText());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Berhasil input data");
+            String path = new File(".").getCanonicalPath();
+            FileUtils.copyFileToDirectory(file, new File(path+"/image"));
+            DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+            model.setRowCount(0);
+            load_table();
+            cl.show(root, "menuUtama");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -988,7 +1109,37 @@ ResultSet rs;
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        
+        String sql = "update mahasiswa set nama_mahasiswa=?, prodi=?, status=?, jk=?, agama=?, alamat=?, email=?, notelp=?, namaayah=?, noktpayah=?, namaibu=?, notelportu=?, almtortu=?, photopath=? where nrp=?";
+        try {
+            CardLayout cl = (CardLayout) root.getLayout();
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, nama);
+            pst.setString(2, prodi);
+            pst.setString(3, status);
+            pst.setString(4, jk);
+            pst.setString(5, agama);
+            pst.setString(6, alamat);
+            pst.setString(7, email);
+            pst.setString(8, notelp);
+            pst.setString(9, namaAyah);
+            pst.setString(10, ktpAyah);
+            pst.setString(11, namaIbu);
+            pst.setString(12, notelpOrtu);
+            pst.setString(13, alamatOrtu);
+            pst.setString(14, txtfileTest.getText());
+            pst.setString(15, nrp);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil Update data");
+            String path = new File(".").getCanonicalPath();
+            FileUtils.copyFileToDirectory(file, new File(path+"/image"));
+            DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+            model.setRowCount(0);
+            load_table();
+            cl.show(root, "menuUtama");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnEditLpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLpActionPerformed
@@ -1047,15 +1198,127 @@ ResultSet rs;
         txtAlamatOrtu.setText(alamatOrtu);
         txtfileTest.setText(photoname);
         
-        CardLayout cl = (CardLayout) root.getLayout();
-        cl.show(root, "step1");
-        
+        try {
+            Toolkit toolkit=Toolkit.getDefaultToolkit();
+
+            String path=new File(".").getCanonicalPath();
+            Image image=toolkit.getImage(path+"/image/"+photoname); 
+            Image imagedResized=image.getScaledInstance(lbImgEdit.getWidth(), lbImgEdit.getHeight(), Image.SCALE_DEFAULT);
+            ImageIcon icon=new ImageIcon(imagedResized);
+            lbImgEdit.setIcon(icon); 
+            
+        } catch (Exception e) {
+            
+        }
+
     }//GEN-LAST:event_tbMahasiswaMouseClicked
 
     private void btnLanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanjutActionPerformed
         // TODO add your handling code here:
-        
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "step1");
     }//GEN-LAST:event_btnLanjutActionPerformed
+
+    private void btnPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilihActionPerformed
+        // TODO add your handling code here:
+        jfc = new JFileChooser();
+        if (jfc.showOpenDialog(lbImage) == JFileChooser.APPROVE_OPTION)
+        {
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            Image img = tk.getImage(jfc.getSelectedFile().getAbsolutePath());
+            Image imgRsz = img.getScaledInstance(lbImage.getWidth(), lbImage.getHeight(), Image.SCALE_DEFAULT);
+            ImageIcon imgIcon = new ImageIcon(imgRsz);
+            
+            lbImage.setIcon(imgIcon);
+            txtfileTest.setText(jfc.getSelectedFile().getName());
+            file = new File(jfc.getSelectedFile().getPath());
+        }
+    }//GEN-LAST:event_btnPilihActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        String sql = "delete from mahasiswa where nrp=?";
+        int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus ini ?","Confirm Delete",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if (option == JOptionPane.YES_OPTION)
+        {
+            try {
+                CardLayout cl = (CardLayout) root.getLayout();
+                con = config.configDB();
+                pst = con.prepareStatement(sql);
+                pst.setString(1, nrp);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Berhasil Delete data");
+                DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+                model.setRowCount(0);
+                load_table();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } 
+        }
+        else{
+            remove(option);
+        }
+        
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void tbMahasiswaHpsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMahasiswaHpsMouseClicked
+        // TODO add your handling code here:
+        int baris = tbMahasiswa.rowAtPoint(evt.getPoint());
+        nrp = tbMahasiswa.getValueAt(baris, 0).toString();
+        nama = tbMahasiswa.getValueAt(baris, 1).toString();
+        prodi = tbMahasiswa.getValueAt(baris, 2).toString();
+        status = tbMahasiswa.getValueAt(baris, 3).toString();
+        jk = tbMahasiswa.getValueAt(baris, 4).toString();
+        agama = tbMahasiswa.getValueAt(baris, 5).toString();
+        alamat = tbMahasiswa.getValueAt(baris, 6).toString();
+        email = tbMahasiswa.getValueAt(baris, 7).toString();
+        notelp = tbMahasiswa.getValueAt(baris, 8).toString();
+        namaAyah = tbMahasiswa.getValueAt(baris, 9).toString();
+        ktpAyah = tbMahasiswa.getValueAt(baris, 10).toString();
+        namaIbu = tbMahasiswa.getValueAt(baris, 11).toString();
+        notelpOrtu = tbMahasiswa.getValueAt(baris, 12).toString();
+        alamatOrtu = tbMahasiswa.getValueAt(baris, 13).toString();
+        photoname = tbMahasiswa.getValueAt(baris, 14).toString();
+        
+        try {
+            Toolkit toolkit=Toolkit.getDefaultToolkit();
+
+            String path=new File(".").getCanonicalPath();
+            Image image=toolkit.getImage(path+"/image/"+photoname); 
+            Image imagedResized=image.getScaledInstance(lbImgHps.getWidth(), lbImgHps.getHeight(), Image.SCALE_DEFAULT);
+            ImageIcon icon=new ImageIcon(imagedResized);
+            lbImgHps.setIcon(icon); 
+        } catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_tbMahasiswaHpsMouseClicked
+
+    private void btnHapusLpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusLpActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuHapus");
+    }//GEN-LAST:event_btnHapusLpActionPerformed
+
+    private void btnBackEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackEditActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuUtama");
+    }//GEN-LAST:event_btnBackEditActionPerformed
+
+    private void btnBackHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHpsActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuUtama");
+    }//GEN-LAST:event_btnBackHpsActionPerformed
+
+    private void btnBackInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackInputActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuUtama");
+    }//GEN-LAST:event_btnBackInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1099,22 +1362,26 @@ ResultSet rs;
     private javax.swing.JPanel Step2;
     private javax.swing.JPanel Step3;
     private javax.swing.JPanel Step4;
+    private javax.swing.JButton btnBackEdit;
+    private javax.swing.JButton btnBackHps;
+    private javax.swing.JButton btnBackInput;
     private javax.swing.JButton btnBackS2;
     private javax.swing.JButton btnBackS3;
     private javax.swing.JButton btnBackS4;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditLp;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHapusLp;
     private javax.swing.JButton btnInput;
     private javax.swing.JButton btnLanjut;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNextS2;
     private javax.swing.JButton btnNextS3;
+    private javax.swing.JButton btnPilih;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cbAgama;
     private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JCheckBox cbStatus;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1130,7 +1397,6 @@ ResultSet rs;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1146,13 +1412,16 @@ ResultSet rs;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.ButtonGroup kelamin;
+    private javax.swing.JLabel lbImage;
+    private javax.swing.JLabel lbImgEdit;
+    private javax.swing.JLabel lbImgHps;
     private javax.swing.JPanel menutama;
     private javax.swing.JRadioButton rdLk;
     private javax.swing.JRadioButton rdPr;
     private javax.swing.JPanel root;
     private javax.swing.JTable tbMahasiswa;
+    private javax.swing.JTable tbMahasiswaHps;
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JTextField txtAlamatOrtu;
     private javax.swing.JTextField txtEmail;
