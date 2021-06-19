@@ -58,7 +58,6 @@ public class dosen extends javax.swing.JFrame {
      */
     public dosen() {
         initComponents();
-        
         updateTable();
     }
 
