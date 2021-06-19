@@ -95,7 +95,7 @@ ResultSet rs;
         });
 
         jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
-        jLabel24.setText("Welcome, Silakan Pilih ");
+        jLabel24.setText("Mahasiswa, Silakan Pilih ");
 
         btHapus1.setText("Menu Utama");
         btHapus1.addActionListener(new java.awt.event.ActionListener() {

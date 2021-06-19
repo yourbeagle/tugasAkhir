@@ -124,7 +124,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="26" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Welcome, Silakan Pilih "/>
+                <Property name="text" type="java.lang.String" value="Mahasiswa, Silakan Pilih "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btHapus1">
