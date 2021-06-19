@@ -54,6 +54,28 @@ public class dosen extends javax.swing.JFrame {
         }
     }
      
+     
+     private void lanjut()
+    {
+        String sql = "select * from dosen where NIP=?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            String niplanjut = txnip.getText();
+            pst.setString(1, niplanjut);
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                btnlanjut.setEnabled(true);
+                
+            }
+            else{
+                btnlanjut.setEnabled(false);
+                
+            }
+        } catch (Exception e) {
+        }
+    }
      private void edit()
     {
         String sql = "select * from dosen where NIP=?";
@@ -81,6 +103,7 @@ public class dosen extends javax.swing.JFrame {
     public dosen() {
         initComponents();
         edit();
+        lanjut();
         updateTable();
     }
 
@@ -100,6 +123,7 @@ public class dosen extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -138,13 +162,15 @@ public class dosen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbdosen = new javax.swing.JTable();
         jLabel27 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        btnlanjut = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         MilehHapus = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbhapus = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +205,13 @@ public class dosen extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel25.setText("Halaman Dosen");
 
+        jButton2.setText("Lihat Data");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuutamaLayout = new javax.swing.GroupLayout(menuutama);
         menuutama.setLayout(menuutamaLayout);
         menuutamaLayout.setHorizontalGroup(
@@ -189,33 +222,40 @@ public class dosen extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jLabel24))
                     .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jButton1)
-                        .addGap(154, 154, 154)
-                        .addComponent(btnedit)
-                        .addGap(158, 158, 158)
-                        .addComponent(jButton3))
-                    .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(jLabel25)))
-                .addContainerGap(336, Short.MAX_VALUE))
+                        .addGap(354, 354, 354)
+                        .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addGroup(menuutamaLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menuutamaLayout.createSequentialGroup()
+                .addContainerGap(204, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134)
+                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
         );
         menuutamaLayout.setVerticalGroup(
             menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuutamaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel24)
-                .addGap(43, 43, 43)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel25)
-                .addGap(71, 71, 71)
+                .addGap(73, 73, 73)
                 .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnedit)
-                    .addComponent(jButton3))
-                .addContainerGap(269, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
-        root.add(menuutama, "card2");
+        root.add(menuutama, "menuutama");
 
         Step1.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -544,10 +584,17 @@ public class dosen extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setText("Pilih Data");
 
-        jButton7.setText("Lanjutkan");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnlanjut.setText("Lanjutkan");
+        btnlanjut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnlanjutActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Back");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -555,19 +602,22 @@ public class dosen extends javax.swing.JFrame {
         MilehEdit.setLayout(MilehEditLayout);
         MilehEditLayout.setHorizontalGroup(
             MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MilehEditLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
             .addGroup(MilehEditLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MilehEditLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel27))
-                    .addComponent(jLabel26))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnlanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))
+                    .addGroup(MilehEditLayout.createSequentialGroup()
+                        .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MilehEditLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel27))
+                            .addComponent(jLabel26))
+                        .addContainerGap(69, Short.MAX_VALUE))))
         );
         MilehEditLayout.setVerticalGroup(
             MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,8 +629,10 @@ public class dosen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnlanjut, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         root.add(MilehEdit, "edit");
@@ -618,6 +670,13 @@ public class dosen extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Back");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MilehHapusLayout = new javax.swing.GroupLayout(MilehHapus);
         MilehHapus.setLayout(MilehHapusLayout);
         MilehHapusLayout.setHorizontalGroup(
@@ -625,18 +684,21 @@ public class dosen extends javax.swing.JFrame {
             .addGroup(MilehHapusLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addGap(0, 58, Short.MAX_VALUE))
-            .addGroup(MilehHapusLayout.createSequentialGroup()
-                .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MilehHapusLayout.createSequentialGroup()
-                        .addGap(762, 762, 762)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MilehHapusLayout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(622, 622, 622)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MilehHapusLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel28)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(MilehHapusLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel28)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29))
+                        .addGap(0, 58, Short.MAX_VALUE))))
         );
         MilehHapusLayout.setVerticalGroup(
             MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,7 +710,9 @@ public class dosen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -743,11 +807,11 @@ public class dosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnfinishActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnlanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlanjutActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step1");
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnlanjutActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
           CardLayout cl = (CardLayout) root.getLayout();
@@ -879,30 +943,49 @@ public class dosen extends javax.swing.JFrame {
         }
         jabatan = cbja.getSelectedItem().toString();
      
-        String sql="Update dosen SET nidn = '"+nidn+"',nmdosen='"+nama+"',almtdosen='"+alamat+"',notelp='"+telpon+"',email='"+email+"',JK='"+jk+"',ttl='"
-                +"',statusPegawai='"+status+"',pendidikan='"+pendidikan+"',jabatanAkdmk='"+jabatan+"',Where NIP ='"+nip+"'";
+        String sql="Update dosen SET nidn=?,nmdosen=?,almtdosen=?,notelp=?,email=?,JK=?,ttl=?,statusPegawai=?,pendidikan=?,jabatanAkdmk=? Where NIP =?";
         try {
             con = config.configDB();
             pst = con.prepareStatement(sql);
-            pst.setString(1, nip);
-            pst.setString(2, nidn);
-            pst.setString(3, nama);
-            pst.setString(4, alamat);
-            pst.setString(5, telpon);
-            pst.setString(6, email);
-            pst.setString(7, jk);
-            pst.setString(8, ttl);
-            pst.setString(9, status);
-            pst.setString(10, pendidikan);
-            pst.setString(11, jabatan);
+            pst.setString(1, nidn);
+            pst.setString(2, nama);
+            pst.setString(3, alamat);
+            pst.setString(4, telpon);
+            pst.setString(5, email);
+            pst.setString(6, jk);
+            pst.setString(7, ttl);
+            pst.setString(8, status);
+            pst.setString(9, pendidikan);
+            pst.setString(10, jabatan);
+            pst.setString(11, nip);
             pst.executeUpdate();
             updateTable();
             JOptionPane.showMessageDialog(null, "Berhasil Update data");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "edit");
         // TODO add your handling code here:
     }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "edit");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuutama");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuutama");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -947,13 +1030,16 @@ public class dosen extends javax.swing.JFrame {
     private javax.swing.JButton btnback;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnfinish;
+    private javax.swing.JButton btnlanjut;
     private javax.swing.JButton btnnext;
     private javax.swing.JButton btnupdate;
     private javax.swing.JComboBox<String> cbja;
     private javax.swing.JCheckBox cbstatus;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
