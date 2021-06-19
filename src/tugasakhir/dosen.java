@@ -53,11 +53,34 @@ public class dosen extends javax.swing.JFrame {
         }catch(Exception e){
         }
     }
+     
+     private void edit()
+    {
+        String sql = "select * from dosen where NIP=?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            String nipEdit = txnip.getText();
+            pst.setString(1, nipEdit);
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                btnupdate.setEnabled(true);
+                
+            }
+            else{
+                btnupdate.setEnabled(false);
+                
+            }
+        } catch (Exception e) {
+        }
+    }
     /**
      * Creates new form dosen
      */
     public dosen() {
         initComponents();
+        edit();
         updateTable();
     }
 
@@ -109,6 +132,7 @@ public class dosen extends javax.swing.JFrame {
         btnfinish = new javax.swing.JButton();
         cbstatus = new javax.swing.JCheckBox();
         btnback = new javax.swing.JButton();
+        btnupdate = new javax.swing.JButton();
         MilehEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -126,7 +150,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.setLayout(new java.awt.CardLayout());
 
-        menuutama.setBackground(new java.awt.Color(255, 255, 255));
+        menuutama.setBackground(new java.awt.Color(0, 204, 255));
 
         jButton1.setText("input");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +176,8 @@ public class dosen extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel24.setText("Welcome, Silakan Pilih ");
 
-        jLabel25.setText("IKI digae card opo menu bar ae?");
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel25.setText("Halaman Dosen");
 
         javax.swing.GroupLayout menuutamaLayout = new javax.swing.GroupLayout(menuutama);
         menuutama.setLayout(menuutamaLayout);
@@ -161,38 +186,38 @@ public class dosen extends javax.swing.JFrame {
             .addGroup(menuutamaLayout.createSequentialGroup()
                 .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnedit)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addGroup(menuutamaLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel24))
                     .addGroup(menuutamaLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
+                        .addGap(130, 130, 130)
+                        .addComponent(jButton1)
+                        .addGap(154, 154, 154)
+                        .addComponent(btnedit)
+                        .addGap(158, 158, 158)
+                        .addComponent(jButton3))
+                    .addGroup(menuutamaLayout.createSequentialGroup()
+                        .addGap(273, 273, 273)
                         .addComponent(jLabel25)))
-                .addContainerGap(464, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         menuutamaLayout.setVerticalGroup(
             menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuutamaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel24)
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel25)
+                .addGap(71, 71, 71)
                 .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnedit)
                     .addComponent(jButton3))
-                .addGap(113, 113, 113)
-                .addComponent(jLabel25)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         root.add(menuutama, "card2");
 
-        Step1.setBackground(new java.awt.Color(255, 255, 255));
+        Step1.setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel2.setText("- Step 1 of 2");
@@ -344,7 +369,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(Step1, "step1");
 
-        Step2.setBackground(new java.awt.Color(255, 255, 255));
+        Step2.setBackground(new java.awt.Color(0, 204, 204));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel9.setText("- Step 2 of 2");
@@ -396,6 +421,13 @@ public class dosen extends javax.swing.JFrame {
             }
         });
 
+        btnupdate.setText("Update");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Step2Layout = new javax.swing.GroupLayout(Step2);
         Step2.setLayout(Step2Layout);
         Step2Layout.setHorizontalGroup(
@@ -441,6 +473,8 @@ public class dosen extends javax.swing.JFrame {
                 .addGap(111, 111, 111)
                 .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
                 .addComponent(btnfinish, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(115, 115, 115))
         );
@@ -477,13 +511,14 @@ public class dosen extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(Step2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnfinish, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnfinish, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46))
         );
 
         root.add(Step2, "step2");
 
-        MilehEdit.setBackground(new java.awt.Color(255, 255, 255));
+        MilehEdit.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel26.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel26.setText("Edit Entry Data");
@@ -550,7 +585,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(MilehEdit, "edit");
 
-        MilehHapus.setBackground(new java.awt.Color(255, 255, 255));
+        MilehHapus.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel28.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel28.setText("Hapus Data");
@@ -664,6 +699,7 @@ public class dosen extends javax.swing.JFrame {
             jk = "Perempuan";
         }
         ttl = txttl.getText();
+        edit();
         cl.show(root, "step2");
         // TODO add your handling code here:
     }//GEN-LAST:event_btnnextActionPerformed
@@ -830,6 +866,44 @@ public class dosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        nip = txnip.getText();
+        nidn = txnidn.getText();
+        pendidikan = txpend.getText();
+        status = "";
+        if (cbstatus.isSelected()){
+            status+=cbstatus.getText()+"";
+        }
+        else{
+            status+="Tidak Aktif";
+        }
+        jabatan = cbja.getSelectedItem().toString();
+     
+        String sql="Update dosen SET nidn = '"+nidn+"',nmdosen='"+nama+"',almtdosen='"+alamat+"',notelp='"+telpon+"',email='"+email+"',JK='"+jk+"',ttl='"
+                +"',statusPegawai='"+status+"',pendidikan='"+pendidikan+"',jabatanAkdmk='"+jabatan+"',Where NIP ='"+nip+"'";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, nip);
+            pst.setString(2, nidn);
+            pst.setString(3, nama);
+            pst.setString(4, alamat);
+            pst.setString(5, telpon);
+            pst.setString(6, email);
+            pst.setString(7, jk);
+            pst.setString(8, ttl);
+            pst.setString(9, status);
+            pst.setString(10, pendidikan);
+            pst.setString(11, jabatan);
+            pst.executeUpdate();
+            updateTable();
+            JOptionPane.showMessageDialog(null, "Berhasil Update data");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnupdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -874,6 +948,7 @@ public class dosen extends javax.swing.JFrame {
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnfinish;
     private javax.swing.JButton btnnext;
+    private javax.swing.JButton btnupdate;
     private javax.swing.JComboBox<String> cbja;
     private javax.swing.JCheckBox cbstatus;
     private javax.swing.JButton jButton1;
