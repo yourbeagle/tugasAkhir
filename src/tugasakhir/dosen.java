@@ -511,13 +511,13 @@ public class dosen extends javax.swing.JFrame {
 
         tbdosen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NRP", "Nama", "Agama", "Jenis Kelamin", "Alamat", "Email", "Nomer Hp", "Prodi", "Status", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
+                "No", "NIP", "NIDN", "Nama", "Alamat", "No Telpon", "Email", "Jenis Kelamin", "Tempat Tanggal Lahir", "Status", "Pendidikan", "Jabatan Akademik"
             }
         ));
         tbdosen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -581,13 +581,13 @@ public class dosen extends javax.swing.JFrame {
 
         tbhapus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NRP", "Nama", "Agama", "Jenis Kelamin", "Alamat", "Email", "Nomer Hp", "Prodi", "Status", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
+                "NO", "NIP", "NIDN", "Nama", "Alamat", "No Telp", "Email", "Jenis Kelamin", "Tempat Tanggal Lahir", "Status ", "Pendidikan", "Jabatan Akademik"
             }
         ));
         tbhapus.addMouseListener(new java.awt.event.MouseAdapter() {
