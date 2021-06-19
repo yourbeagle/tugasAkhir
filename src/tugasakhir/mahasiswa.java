@@ -50,7 +50,6 @@ File file;
         btnInput = new javax.swing.JButton();
         btnEditLp = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         btnHapusLp = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -131,7 +130,7 @@ File file;
 
         root.setLayout(new java.awt.CardLayout());
 
-        menutama.setBackground(new java.awt.Color(255, 255, 255));
+        menutama.setBackground(new java.awt.Color(172, 226, 219));
 
         btnInput.setText("input");
         btnInput.addActionListener(new java.awt.event.ActionListener() {
@@ -150,8 +149,6 @@ File file;
         jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel24.setText("Welcome, Silakan Pilih ");
 
-        jLabel25.setText("IKI digae card opo menu bar ae?");
-
         btnHapusLp.setText("Hapus");
         btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,40 +161,34 @@ File file;
         menutamaLayout.setHorizontalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menutamaLayout.createSequentialGroup()
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(btnInput)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditLp)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel24))
-                    .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(jLabel25)))
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jLabel24)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197)
+                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
         menutamaLayout.setVerticalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menutamaLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel24)
-                .addGap(44, 44, 44)
+                .addGap(141, 141, 141)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInput)
-                    .addComponent(btnEditLp)
-                    .addComponent(btnHapusLp))
-                .addGap(113, 113, 113)
-                .addComponent(jLabel25)
-                .addContainerGap(242, Short.MAX_VALUE))
+                    .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         root.add(menutama, "menuUtama");
 
-        Step1.setBackground(new java.awt.Color(255, 255, 255));
+        Step1.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel2.setText("- Step 1 of 4");
@@ -210,12 +201,12 @@ File file;
 
         txtAlamat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        rdLk.setBackground(new java.awt.Color(255, 255, 255));
+        rdLk.setBackground(new java.awt.Color(172, 226, 219));
         kelamin.add(rdLk);
         rdLk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdLk.setText("Laki-Laki");
 
-        rdPr.setBackground(new java.awt.Color(255, 255, 255));
+        rdPr.setBackground(new java.awt.Color(172, 226, 219));
         kelamin.add(rdPr);
         rdPr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdPr.setText("Perempuan");
@@ -336,9 +327,7 @@ File file;
                         .addGap(1, 1, 1)
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addGroup(Step1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7)))))
+                            .addComponent(jLabel7))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail)
@@ -366,7 +355,7 @@ File file;
 
         root.add(Step1, "step1");
 
-        Step2.setBackground(new java.awt.Color(255, 255, 255));
+        Step2.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel9.setText("Input Data ");
@@ -393,7 +382,7 @@ File file;
             }
         });
 
-        cbStatus.setBackground(new java.awt.Color(255, 255, 255));
+        cbStatus.setBackground(new java.awt.Color(172, 226, 219));
         cbStatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbStatus.setText("Aktif");
 
@@ -471,6 +460,8 @@ File file;
         );
 
         root.add(Step2, "step2");
+
+        Step3.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel14.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel14.setText("Input Data ");
@@ -593,6 +584,8 @@ File file;
 
         root.add(Step3, "step3");
 
+        Step4.setBackground(new java.awt.Color(172, 226, 219));
+
         jLabel21.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel21.setText("Input Data ");
 
@@ -685,9 +678,12 @@ File file;
 
         root.add(Step4, "step4");
 
+        MilihEdit.setBackground(new java.awt.Color(172, 226, 219));
+
         jLabel26.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel26.setText("Edit Entry Data");
 
+        tbMahasiswa.setBackground(new java.awt.Color(172, 226, 219));
         tbMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -766,12 +762,15 @@ File file;
 
         root.add(MilihEdit, "milihEdit");
 
+        Hapus.setBackground(new java.awt.Color(172, 226, 219));
+
         jLabel28.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel28.setText("Hapus Data");
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Pilih Data");
 
+        tbMahasiswaHps.setBackground(new java.awt.Color(172, 226, 219));
         tbMahasiswaHps.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -866,6 +865,26 @@ File file;
     }// </editor-fold>//GEN-END:initComponents
 
     
+    public void clearInput()
+    {
+        txtNama.setText("");
+        txtEmail.setText("");
+        txtAlamat.setText("");
+        cbAgama.setSelectedIndex(0);
+        cbProdi.setSelectedIndex(0);
+        cbStatus.setSelected(false);
+        rdLk.setSelected(false);
+        rdPr.setSelected(false);
+        txtPhone.setText("");
+        txtPhoneOrtu.setText("");
+        txtNrp.setText("");
+        txtNamaA.setText("");
+        txtNamaIb.setText("");
+        txtKtpA.setText("");
+        txtfileTest.setText("");
+        
+    }
+    
     public void load_table()
     {
         DefaultTableModel model = new DefaultTableModel();
@@ -958,7 +977,7 @@ File file;
             rs = stm.executeQuery(sql);
             if (rs.next())
             {
-                if(txtNrp.getText().equals(rs.getString(1))&& txtNrp.getText() != "")
+                if(txtNrp.getText().equals(rs.getString(1)) || txtNrp.getText() != "")
                 {
                     txtNrp.setEditable(false);
                 }
@@ -1259,7 +1278,7 @@ File file;
             } 
         }
         else{
-            remove(option);
+            JOptionPane.showMessageDialog(null, "Tidak jadi Delete");
         }
         
     }//GEN-LAST:event_btnHapusActionPerformed
@@ -1306,6 +1325,7 @@ File file;
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "menuUtama");
+        clearInput();
     }//GEN-LAST:event_btnBackEditActionPerformed
 
     private void btnBackHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHpsActionPerformed
@@ -1398,7 +1418,6 @@ File file;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
