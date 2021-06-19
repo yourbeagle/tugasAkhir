@@ -890,8 +890,8 @@ public class dosen extends javax.swing.JFrame {
         nidn = tbdosen.getValueAt(baris, 2).toString();
         nama = tbdosen.getValueAt(baris, 3).toString();
         alamat = tbdosen.getValueAt(baris, 4).toString();
-        email = tbdosen.getValueAt(baris, 5).toString();
-        telpon = tbdosen.getValueAt(baris, 6).toString();
+        telpon = tbdosen.getValueAt(baris, 5).toString();
+        email = tbdosen.getValueAt(baris, 6).toString();
         jk = tbdosen.getValueAt(baris, 7).toString();
         ttl = tbdosen.getValueAt(baris, 8).toString();
         status = tbdosen.getValueAt(baris, 9).toString();
@@ -941,17 +941,31 @@ public class dosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-        nip = txnip.getText();
-        nidn = txnidn.getText();
-        pendidikan = txpend.getText();
-        status = "";
-        if (cbstatus.isSelected()){
-            status+=cbstatus.getText()+"";
+               txnip.setText(nip);
+        txnidn.setText(nidn);
+        txnama.setText(nama);
+        txalamat.setText(alamat);
+        txemail.setText(email);
+        txtelepon.setText(telpon);
+        if(jk.equals("Laki - Laki"))
+        {
+            rdlaki.setSelected(true);
         }
-        else{
-            status+="Tidak Aktif";
+        if (jk.equals("Perempuan"))
+        {
+            rdperempuan.setSelected(true);
         }
-        jabatan = cbja.getSelectedItem().toString();
+        txttl.setText(ttl);
+        if (status.equals("Aktif"))
+        {
+            cbstatus.setSelected(true);
+        }
+        else
+        {
+            cbstatus.setSelected(false);
+        }
+        txpend.setText(pendidikan);
+        cbja.setSelectedItem(jabatan);
      
         String sql="Update dosen SET nidn=?,nmdosen=?,almtdosen=?,notelp=?,email=?,JK=?,ttl=?,statusPegawai=?,pendidikan=?,jabatanAkdmk=? Where NIP =?";
         try {
