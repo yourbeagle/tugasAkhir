@@ -2,5 +2,5 @@
 
 # Kelompok 
 1. Wahyu Bagus Wicaksono
-2. Aziz Sulaiman
+2. Azis Sulaiman
 3. Reyjuna Alfikly Firmansyah
