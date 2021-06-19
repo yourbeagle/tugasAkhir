@@ -102,8 +102,6 @@ public class dosen extends javax.swing.JFrame {
      */
     public dosen() {
         initComponents();
-        edit();
-        lanjut();
         updateTable();
     }
 
@@ -810,6 +808,7 @@ public class dosen extends javax.swing.JFrame {
             pst.setString(11, jabatan);
             pst.executeUpdate();
             updateTable();
+            edit();
             JOptionPane.showMessageDialog(null, "Berhasil input data");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -924,8 +923,7 @@ public class dosen extends javax.swing.JFrame {
         }
         txpend.setText(pendidikan);
         cbja.setSelectedItem(jabatan);
-        CardLayout cl = (CardLayout) root.getLayout();
-        cl.show(root, "step1");
+
         // TODO add your handling code here:
     }//GEN-LAST:event_tbdosenMouseClicked
 
@@ -984,6 +982,7 @@ public class dosen extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "edit");
+        lanjut();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
