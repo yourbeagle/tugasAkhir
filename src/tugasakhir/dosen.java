@@ -175,7 +175,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.setLayout(new java.awt.CardLayout());
 
-        menuutama.setBackground(new java.awt.Color(0, 204, 255));
+        menuutama.setBackground(new java.awt.Color(172, 226, 219));
 
         jButton1.setText("input");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +267,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(menuutama, "menuutama");
 
-        Step1.setBackground(new java.awt.Color(51, 204, 255));
+        Step1.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel2.setText("- Step 1 of 2");
@@ -280,11 +280,11 @@ public class dosen extends javax.swing.JFrame {
 
         txalamat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        rdlaki.setBackground(new java.awt.Color(255, 255, 255));
+        rdlaki.setBackground(new java.awt.Color(172, 226, 219));
         rdlaki.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdlaki.setText("Laki-Laki");
 
-        rdperempuan.setBackground(new java.awt.Color(255, 255, 255));
+        rdperempuan.setBackground(new java.awt.Color(172, 226, 219));
         rdperempuan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdperempuan.setText("Perempuan");
 
@@ -419,7 +419,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(Step1, "step1");
 
-        Step2.setBackground(new java.awt.Color(0, 204, 204));
+        Step2.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel9.setText("- Step 2 of 2");
@@ -459,7 +459,7 @@ public class dosen extends javax.swing.JFrame {
             }
         });
 
-        cbstatus.setBackground(new java.awt.Color(255, 255, 255));
+        cbstatus.setBackground(new java.awt.Color(172, 226, 219));
         cbstatus.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbstatus.setText("Aktif");
 
@@ -568,7 +568,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(Step2, "step2");
 
-        MilehEdit.setBackground(new java.awt.Color(0, 153, 204));
+        MilehEdit.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel26.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel26.setText("Edit Entry Data");
@@ -647,7 +647,7 @@ public class dosen extends javax.swing.JFrame {
 
         root.add(MilehEdit, "edit");
 
-        MilehHapus.setBackground(new java.awt.Color(0, 153, 204));
+        MilehHapus.setBackground(new java.awt.Color(172, 226, 219));
 
         jLabel28.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel28.setText("Hapus Data");
