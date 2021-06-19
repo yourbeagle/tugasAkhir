@@ -80,6 +80,8 @@ public class dosen extends javax.swing.JFrame {
      */
     public dosen() {
         initComponents();
+        
+        updateTable();
     }
 
     /**
@@ -757,33 +759,59 @@ public class dosen extends javax.swing.JFrame {
 
     private void tbhapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbhapusMouseClicked
          int baris = tbhapus.rowAtPoint(evt.getPoint());
-        nip = tbhapus.getValueAt(baris, 0).toString();
-        nidn = tbhapus.getValueAt(baris, 1).toString();
-        nama = tbhapus.getValueAt(baris, 2).toString();
-        alamat = tbhapus.getValueAt(baris, 3).toString();
-        email = tbhapus.getValueAt(baris, 4).toString();
-        telpon = tbhapus.getValueAt(baris, 5).toString();
-        jk = tbhapus.getValueAt(baris, 6).toString();
-        ttl = tbhapus.getValueAt(baris, 7).toString();
-        status = tbhapus.getValueAt(baris, 8).toString();
-        pendidikan = tbhapus.getValueAt(baris, 9).toString();
-        jabatan = tbhapus.getValueAt(baris, 10).toString();
+        nip = tbhapus.getValueAt(baris, 1).toString();
+        nidn = tbhapus.getValueAt(baris, 2).toString();
+        nama = tbhapus.getValueAt(baris, 3).toString();
+        alamat = tbhapus.getValueAt(baris, 4).toString();
+        email = tbhapus.getValueAt(baris, 5).toString();
+        telpon = tbhapus.getValueAt(baris, 6).toString();
+        jk = tbhapus.getValueAt(baris, 7).toString();
+        ttl = tbhapus.getValueAt(baris, 8).toString();
+        status = tbhapus.getValueAt(baris, 9).toString();
+        pendidikan = tbhapus.getValueAt(baris, 10).toString();
+        jabatan = tbhapus.getValueAt(baris, 11).toString();
+        
+        txnip.setText(nip);
+        txnidn.setText(nidn);
+        txnama.setText(nama);
+        txalamat.setText(alamat);
+        txemail.setText(email);
+        txtelepon.setText(telpon);
+        if(jk.equals("Laki - Laki"))
+        {
+            rdlaki.setSelected(true);
+        }
+        if (jk.equals("Perempuan"))
+        {
+            rdperempuan.setSelected(true);
+        }
+        txttl.setText(ttl);
+        if (status.equals("Aktif"))
+        {
+            cbstatus.setSelected(true);
+        }
+        else
+        {
+            cbstatus.setSelected(false);
+        }
+        txpend.setText(pendidikan);
+        cbja.setSelectedItem(jabatan);
         // TODO add your handling code here:
     }//GEN-LAST:event_tbhapusMouseClicked
 
     private void tbdosenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbdosenMouseClicked
         int baris = tbdosen.rowAtPoint(evt.getPoint());
-        nip = tbdosen.getValueAt(baris, 0).toString();
-        nidn = tbdosen.getValueAt(baris, 1).toString();
-        nama = tbdosen.getValueAt(baris, 2).toString();
-        alamat = tbdosen.getValueAt(baris, 3).toString();
-        email = tbdosen.getValueAt(baris, 4).toString();
-        telpon = tbdosen.getValueAt(baris, 5).toString();
-        jk = tbdosen.getValueAt(baris, 6).toString();
-        ttl = tbdosen.getValueAt(baris, 7).toString();
-        status = tbdosen.getValueAt(baris, 8).toString();
-        pendidikan = tbdosen.getValueAt(baris, 9).toString();
-        jabatan = tbdosen.getValueAt(baris, 10).toString();
+        nip = tbdosen.getValueAt(baris, 1).toString();
+        nidn = tbdosen.getValueAt(baris, 2).toString();
+        nama = tbdosen.getValueAt(baris, 3).toString();
+        alamat = tbdosen.getValueAt(baris, 4).toString();
+        email = tbdosen.getValueAt(baris, 5).toString();
+        telpon = tbdosen.getValueAt(baris, 6).toString();
+        jk = tbdosen.getValueAt(baris, 7).toString();
+        ttl = tbdosen.getValueAt(baris, 8).toString();
+        status = tbdosen.getValueAt(baris, 9).toString();
+        pendidikan = tbdosen.getValueAt(baris, 10).toString();
+        jabatan = tbdosen.getValueAt(baris, 11).toString();
         
         txnip.setText(nip);
         txnidn.setText(nidn);
@@ -818,7 +846,7 @@ public class dosen extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
           try{
             String sql = "DELETE FROM dosen WHERE NIP='"+txnip.getText()+"'";
-            Statement stm = con.createStatement();
+            stm = con.createStatement();
             stm.executeUpdate(sql);
             updateTable();
             JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
