@@ -55,27 +55,6 @@ public class dosen extends javax.swing.JFrame {
     }
      
      
-     private void lanjut()
-    {
-        String sql = "select * from dosen where NIP=?";
-        try {
-            con = config.configDB();
-            pst = con.prepareStatement(sql);
-            String niplanjut = txnip.getText();
-            pst.setString(1, niplanjut);
-            rs = pst.executeQuery();
-            if(rs.next())
-            {
-                btnlanjut.setEnabled(true);
-                
-            }
-            else{
-                btnlanjut.setEnabled(false);
-                
-            }
-        } catch (Exception e) {
-        }
-    }
      private void edit()
     {
         String sql = "select * from dosen where NIP=?";
@@ -121,7 +100,6 @@ public class dosen extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -140,6 +118,7 @@ public class dosen extends javax.swing.JFrame {
         txtelepon = new javax.swing.JTextField();
         btnnext = new javax.swing.JButton();
         txttl = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         Step2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -204,13 +183,6 @@ public class dosen extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel25.setText("Halaman Dosen");
 
-        jButton2.setText("Lihat Data");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jButton6.setText("Menu Utama");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,11 +206,7 @@ public class dosen extends javax.swing.JFrame {
                 .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuutamaLayout.createSequentialGroup()
                         .addGap(354, 354, 354)
-                        .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25)
-                            .addGroup(menuutamaLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel25))
                     .addGroup(menuutamaLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(menuutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,9 +226,7 @@ public class dosen extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -319,6 +285,13 @@ public class dosen extends javax.swing.JFrame {
 
         txttl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jButton2.setText("Kembali");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Step1Layout = new javax.swing.GroupLayout(Step1);
         Step1.setLayout(Step1Layout);
         Step1Layout.setHorizontalGroup(
@@ -354,18 +327,21 @@ public class dosen extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(Step1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txemail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txalamat, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtelepon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                    .addGroup(Step1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91))
+                    .addGroup(Step1Layout.createSequentialGroup()
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txemail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txalamat, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtelepon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(111, 111, 111))))
         );
         Step1Layout.setVerticalGroup(
             Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +370,7 @@ public class dosen extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel7)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txemail, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                        .addComponent(txemail, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Step1Layout.createSequentialGroup()
                                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +385,9 @@ public class dosen extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)))
-                        .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40))
                     .addGroup(Step1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
@@ -757,6 +735,18 @@ public class dosen extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step1");
+        txnip.setText("");
+        txnidn.setText("");
+        txnama.setText("");
+        txalamat.setText("");
+        txtelepon.setText("");
+        txemail.setText("");
+        rdlaki.setSelected(false);
+        rdperempuan.setSelected(false);
+        txttl.setText("");
+        cbstatus.setSelected(false);
+        txpend.setText("");
+        cbja.setSelectedIndex(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -928,15 +918,22 @@ public class dosen extends javax.swing.JFrame {
     }//GEN-LAST:event_tbdosenMouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-          try{
             String sql = "DELETE FROM dosen WHERE NIP='"+txnip.getText()+"'";
+               int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus ini ?","Confirm Delete",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+       if (option == JOptionPane.YES_OPTION){
+            try{
             stm = con.createStatement();
             stm.executeUpdate(sql);
             updateTable();
             JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-        }catch(Exception e){
+            }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-        }
+            }
+       }else{
+           JOptionPane.showMessageDialog(null, "Tidak Jadi Didelete");
+       }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -967,13 +964,6 @@ public class dosen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnupdateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CardLayout cl = (CardLayout) root.getLayout();
-        cl.show(root, "edit");
-        lanjut();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "menuutama");
@@ -992,6 +982,12 @@ public class dosen extends javax.swing.JFrame {
         lp.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuutama");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
