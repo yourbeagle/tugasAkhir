@@ -7,8 +7,14 @@ package tugasakhir;
 import java.awt.CardLayout;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -126,6 +132,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         });
 
         jButton4.setText("Cetak");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
         menutama.setLayout(menutamaLayout);
@@ -866,6 +877,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         }
         
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         try{
+            String jrmxlFile ="src/Report/JadwalReport.jrxml";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
+            HashMap param = new HashMap();
+            JasperReport jspR = JasperCompileManager.compileReport(jrmxlFile);
+            JasperPrint JPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(JPrint,false);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        } 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

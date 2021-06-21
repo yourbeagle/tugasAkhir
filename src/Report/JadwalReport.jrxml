@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM JADWAL]]>
+	</queryString>
+	<field name="kdJadwal" class="java.lang.Integer"/>
+	<field name="Periode" class="java.lang.String"/>
+	<field name="Tanggal" class="java.lang.String"/>
+	<field name="kdMatkul" class="java.lang.String"/>
+	<field name="nmMatkul" class="java.lang.String"/>
+	<field name="Kelas" class="java.lang.String"/>
+	<field name="Waktu" class="java.lang.String"/>
+	<field name="Ruang" class="java.lang.String"/>
+	<field name="Pengajar" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="12" width="65" height="20"/>
+				<textElement/>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="12" width="131" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="12" width="57" height="20"/>
+				<textElement/>
+				<text><![CDATA[kdJadwal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="12" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[nmMatkul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="12" width="46" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="12" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[Waktu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="12" width="53" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ruang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="12" width="79" height="20"/>
+				<textElement/>
+				<text><![CDATA[Pengajar]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="55" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="5" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="23" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Periode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="23" width="131" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="23" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{kdJadwal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="23" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nmMatkul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="23" width="46" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Kelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="23" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Waktu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="23" width="53" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Ruang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="23" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Pengajar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
