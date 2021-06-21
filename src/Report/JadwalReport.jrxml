@@ -48,14 +48,14 @@
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="196" y="12" width="57" height="20"/>
+				<reportElement x="196" y="12" width="39" height="20"/>
 				<textElement/>
-				<text><![CDATA[kdJadwal]]></text>
+				<text><![CDATA[Kode]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="253" y="12" width="56" height="20"/>
+				<reportElement x="235" y="12" width="74" height="20"/>
 				<textElement/>
-				<text><![CDATA[nmMatkul]]></text>
+				<text><![CDATA[Nama Matkul]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="309" y="12" width="46" height="20"/>

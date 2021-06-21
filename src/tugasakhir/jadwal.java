@@ -881,7 +881,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
          try{
             String jrmxlFile ="src/Report/JadwalReport.jrxml";
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
             HashMap param = new HashMap();
             JasperReport jspR = JasperCompileManager.compileReport(jrmxlFile);
             JasperPrint JPrint = JasperFillManager.fillReport(jspR, param, con);
