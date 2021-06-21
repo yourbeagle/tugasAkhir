@@ -14,6 +14,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FileUtils;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author Realfi
@@ -46,11 +53,6 @@ File file;
 
         kelamin = new javax.swing.ButtonGroup();
         root = new javax.swing.JPanel();
-        menutama = new javax.swing.JPanel();
-        btnInput = new javax.swing.JButton();
-        btnEditLp = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        btnHapusLp = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -120,6 +122,14 @@ File file;
         btnHapus = new javax.swing.JButton();
         lbImgHps = new javax.swing.JLabel();
         btnBackHps = new javax.swing.JButton();
+        menutama = new javax.swing.JPanel();
+        btnInput = new javax.swing.JButton();
+        btnEditLp = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        btnHapusLp = new javax.swing.JButton();
+        btHapus1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -129,64 +139,6 @@ File file;
         });
 
         root.setLayout(new java.awt.CardLayout());
-
-        menutama.setBackground(new java.awt.Color(172, 226, 219));
-
-        btnInput.setText("input");
-        btnInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInputActionPerformed(evt);
-            }
-        });
-
-        btnEditLp.setText("Edit");
-        btnEditLp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditLpActionPerformed(evt);
-            }
-        });
-
-        jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
-        jLabel24.setText("Welcome, Silakan Pilih ");
-
-        btnHapusLp.setText("Hapus");
-        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHapusLpActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
-        menutama.setLayout(menutamaLayout);
-        menutamaLayout.setHorizontalGroup(
-            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel24)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
-                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
-        );
-        menutamaLayout.setVerticalGroup(
-            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel24)
-                .addGap(141, 141, 141)
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(257, Short.MAX_VALUE))
-        );
-
-        root.add(menutama, "menuUtama");
 
         Step1.setBackground(new java.awt.Color(172, 226, 219));
 
@@ -848,6 +800,98 @@ File file;
 
         root.add(Hapus, "menuHapus");
 
+        menutama.setBackground(new java.awt.Color(172, 226, 219));
+
+        btnInput.setText("input");
+        btnInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInputActionPerformed(evt);
+            }
+        });
+
+        btnEditLp.setText("Edit");
+        btnEditLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditLpActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
+        jLabel24.setText("Welcome, Silakan Pilih ");
+
+        btnHapusLp.setText("Hapus");
+        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusLpActionPerformed(evt);
+            }
+        });
+
+        btHapus1.setText("Menu Utama");
+        btHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHapus1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Cetak Report");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel25.setText("Halaman Mahasiswa");
+
+        javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
+        menutama.setLayout(menutamaLayout);
+        menutamaLayout.setHorizontalGroup(
+            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197)
+                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menutamaLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel24))
+                    .addGroup(menutamaLayout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(jLabel25)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        menutamaLayout.setVerticalGroup(
+            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel24)
+                .addGap(68, 68, 68)
+                .addComponent(jLabel25)
+                .addGap(44, 44, 44)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
+        );
+
+        root.add(menutama, "menuUtama");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1340,6 +1384,25 @@ File file;
         cl.show(root, "menuUtama");
     }//GEN-LAST:event_btnBackInputActionPerformed
 
+    private void btHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapus1ActionPerformed
+        this.dispose();
+        landingpage lp = new landingpage();
+        lp.setVisible(true);
+    }//GEN-LAST:event_btHapus1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try{
+            String jrmxlFile ="src/Report/mahasiswaReport.jrxml";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
+            HashMap param = new HashMap();
+            JasperReport jspR = JasperCompileManager.compileReport(jrmxlFile);
+            JasperPrint JPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(JPrint,false);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1382,6 +1445,7 @@ File file;
     private javax.swing.JPanel Step2;
     private javax.swing.JPanel Step3;
     private javax.swing.JPanel Step4;
+    private javax.swing.JButton btHapus1;
     private javax.swing.JButton btnBackEdit;
     private javax.swing.JButton btnBackHps;
     private javax.swing.JButton btnBackInput;
@@ -1402,6 +1466,7 @@ File file;
     private javax.swing.JComboBox<String> cbAgama;
     private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JCheckBox cbStatus;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1418,6 +1483,7 @@ File file;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
