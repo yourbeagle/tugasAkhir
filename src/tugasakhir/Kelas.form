@@ -61,7 +61,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btHapus1" min="-2" pref="117" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -69,19 +74,23 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                              <Component id="btInput" min="-2" pref="90" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                              <Component id="btEdit" min="-2" pref="89" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-                              <Component id="btHapus" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButton1" min="-2" pref="119" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btInput" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                                      <Component id="btEdit" min="-2" pref="89" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                                      <Component id="btHapus" min="-2" pref="90" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
+                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="195" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btHapus1" min="-2" pref="117" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -90,14 +99,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btEdit" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="btHapus" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="btInput" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="140" max="32767" attributes="0"/>
-                      <Component id="btHapus1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btHapus1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -133,7 +147,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="26" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kelas, Silakan Pilih "/>
+                <Property name="text" type="java.lang.String" value="Wellcome, Silakan Pilih "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btHapus1">
@@ -143,6 +157,22 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btHapus1ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cetak Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="24" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Halaman Kelas"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -250,7 +280,6 @@
                                   <Component id="tbSimpan" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                   <Component id="tbSimpan1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -261,6 +290,7 @@
                               <Component id="txtRuang" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -800,7 +830,6 @@
                                   <Component id="tbSimpan2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                   <Component id="tbEditReal" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -808,6 +837,7 @@
                               <Component id="txtRuang1" min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

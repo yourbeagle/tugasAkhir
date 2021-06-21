@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from mahasiswa
+]]>
+	</queryString>
+	<field name="nrp" class="java.lang.String"/>
+	<field name="nama_mahasiswa" class="java.lang.String"/>
+	<field name="prodi" class="java.lang.String"/>
+	<field name="Status" class="java.lang.String"/>
+	<field name="JK" class="java.lang.String"/>
+	<field name="agama" class="java.lang.String"/>
+	<field name="alamat" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="notelp" class="java.lang.String"/>
+	<field name="namaAyah" class="java.lang.String"/>
+	<field name="noKTPAyah" class="java.lang.String"/>
+	<field name="namaIbu" class="java.lang.String"/>
+	<field name="noTelpOrtu" class="java.lang.String"/>
+	<field name="almtOrtu" class="java.lang.String"/>
+	<field name="photopath" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="16" width="236" height="31"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report - Mahasiswa]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="28" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="2" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[NRP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="2" width="48" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="2" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Prodi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="1" width="57" height="20"/>
+				<textElement/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="41" height="20"/>
+				<textElement/>
+				<text><![CDATA[JK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="2" width="67" height="20"/>
+				<textElement/>
+				<text><![CDATA[Agama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="2" width="56" height="20"/>
+				<textElement/>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="1" width="55" height="20"/>
+				<textElement/>
+				<text><![CDATA[No Telp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="2" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ayah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="2" width="59" height="20"/>
+				<textElement/>
+				<text><![CDATA[Ibu]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="8" width="45" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nrp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="8" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nama_mahasiswa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="10" width="45" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prodi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="10" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="10" width="41" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{JK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="10" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{agama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="10" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="364" y="10" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{notelp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="10" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{namaAyah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="10" width="59" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{namaIbu}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

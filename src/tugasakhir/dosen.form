@@ -52,15 +52,6 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="204" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="btnedit" min="-2" pref="68" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -69,13 +60,26 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton6" min="-2" pref="103" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="204" max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                      <Component id="btnedit" min="-2" pref="68" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                      <Component id="jButton7" min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton6" min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,9 +96,12 @@
                           <Component id="btnedit" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jButton3" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="158" max="32767" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="jButton7" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -146,6 +153,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cetak Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

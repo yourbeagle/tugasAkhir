@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from matakuliah]]>
+	</queryString>
+	<field name="kdMatkul" class="java.lang.String"/>
+	<field name="periode" class="java.lang.String"/>
+	<field name="nmMatkul" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="17" width="230" height="35"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report - Matakuliah]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="438" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="15" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kode Matakuliah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama Matakuliah]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="15" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{kdMatkul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{periode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nmMatkul}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -33,6 +40,8 @@ ResultSet rs;
         btHapus = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         btHapus1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
         input = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -95,7 +104,7 @@ ResultSet rs;
         });
 
         jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
-        jLabel24.setText("Mahasiswa, Silakan Pilih ");
+        jLabel24.setText("Matakuliah, Silakan Pilih ");
 
         btHapus1.setText("Menu Utama");
         btHapus1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,10 +113,26 @@ ResultSet rs;
             }
         });
 
+        jButton1.setText("Cetak Report");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel25.setText("Halaman Matakuliah");
+
         javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
         menutama.setLayout(menutamaLayout);
         menutamaLayout.setHorizontalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
             .addGroup(menutamaLayout.createSequentialGroup()
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menutamaLayout.createSequentialGroup()
@@ -119,25 +144,28 @@ ResultSet rs;
                         .addGap(157, 157, 157)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(144, 144, 144)
-                        .addComponent(btHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menutamaLayout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(jLabel25)))
                 .addContainerGap(238, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
         );
         menutamaLayout.setVerticalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menutamaLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel24)
-                .addGap(154, 154, 154)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel25)
+                .addGap(50, 50, 50)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btInput, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
         );
 
@@ -670,6 +698,19 @@ ResultSet rs;
         lp.setVisible(true);
     }//GEN-LAST:event_btHapus1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            String jrmxlFile ="src/Report/reportmatakuliah.jrxml";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
+            HashMap param = new HashMap();
+            JasperReport jspR = JasperCompileManager.compileReport(jrmxlFile);
+            JasperPrint JPrint = JasperFillManager.fillReport(jspR, param, con);
+            JasperViewer.viewReport(JPrint,false);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -724,9 +765,11 @@ ResultSet rs;
     private javax.swing.JComboBox<String> cbMatkul1;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel input;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;

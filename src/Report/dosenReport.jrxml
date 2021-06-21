@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from dosen]]>
+	</queryString>
+	<field name="NIP" class="java.lang.String"/>
+	<field name="NIDN" class="java.lang.String"/>
+	<field name="nmDosen" class="java.lang.String"/>
+	<field name="almtDosen" class="java.lang.String"/>
+	<field name="notelp" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="JK" class="java.lang.String"/>
+	<field name="TTL" class="java.lang.String"/>
+	<field name="statusPegawai" class="java.lang.String"/>
+	<field name="pendidikan" class="java.lang.String"/>
+	<field name="jabatanAkdmk" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="183" y="18" width="183" height="34"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Dosen]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="434" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="2" width="40" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="2" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[NIDN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="2" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="2" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="1" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[No Telp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="2" width="51" height="20"/>
+				<textElement/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="2" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[JK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="2" width="65" height="20"/>
+				<textElement/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="2" width="57" height="20"/>
+				<textElement/>
+				<text><![CDATA[Pendidikan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="2" width="57" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jabatan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="2" y="9" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{NIP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="9" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{NIDN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="9" width="52" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nmDosen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="9" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{almtDosen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="9" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{notelp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="9" width="51" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="9" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{JK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="9" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{statusPegawai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="9" width="57" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pendidikan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="9" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{jabatanAkdmk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
