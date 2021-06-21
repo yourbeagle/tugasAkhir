@@ -19,7 +19,15 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="32" width="146" height="47"/>
+				<textElement textAlignment="Justified">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jadwal]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="50" splitType="Stretch"/>
