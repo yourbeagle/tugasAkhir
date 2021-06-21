@@ -45,7 +45,7 @@ java.util.Date tgll;
         btHapus = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         btHapus1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnCetak = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         input = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -130,10 +130,10 @@ java.util.Date tgll;
             }
         });
 
-        jButton1.setText("Cetak Report");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCetak.setText("Cetak Report");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCetakActionPerformed(evt);
             }
         });
 
@@ -156,7 +156,7 @@ java.util.Date tgll;
                     .addGroup(menutamaLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(menutamaLayout.createSequentialGroup()
                                 .addComponent(btInput, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(157, 157, 157)
@@ -183,7 +183,7 @@ java.util.Date tgll;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
         );
 
@@ -820,7 +820,7 @@ java.util.Date tgll;
         backhome();
     }//GEN-LAST:event_btHapusss1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         try{
             String jrmxlFile ="src/Report/kelasReport.jrxml";
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
@@ -831,7 +831,7 @@ java.util.Date tgll;
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCetakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -878,6 +878,7 @@ java.util.Date tgll;
     private javax.swing.JButton btHapusss;
     private javax.swing.JButton btHapusss1;
     private javax.swing.JButton btInput;
+    private javax.swing.JButton btnCetak;
     private javax.swing.JComboBox<String> cbJam;
     private javax.swing.JComboBox<String> cbJam1;
     private javax.swing.JComboBox<String> cbKelas;
@@ -886,7 +887,6 @@ java.util.Date tgll;
     private com.toedter.calendar.JDateChooser chDate1;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel input;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

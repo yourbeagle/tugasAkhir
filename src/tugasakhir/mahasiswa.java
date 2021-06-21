@@ -128,7 +128,7 @@ File file;
         jLabel24 = new javax.swing.JLabel();
         btnHapusLp = new javax.swing.JButton();
         btHapus1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnCetakMhs = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -833,10 +833,10 @@ File file;
             }
         });
 
-        jButton7.setText("Cetak Report");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnCetakMhs.setText("Cetak Report");
+        btnCetakMhs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnCetakMhsActionPerformed(evt);
             }
         });
 
@@ -857,7 +857,7 @@ File file;
                 .addGap(146, 146, 146))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(123, 123, 123))
@@ -886,7 +886,7 @@ File file;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58))
         );
 
@@ -1390,7 +1390,7 @@ File file;
         lp.setVisible(true);
     }//GEN-LAST:event_btHapus1ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnCetakMhsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakMhsActionPerformed
         try{
             String jrmxlFile ="src/Report/mahasiswaReport.jrxml";
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
@@ -1401,7 +1401,7 @@ File file;
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e);
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnCetakMhsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1452,6 +1452,7 @@ File file;
     private javax.swing.JButton btnBackS2;
     private javax.swing.JButton btnBackS3;
     private javax.swing.JButton btnBackS4;
+    private javax.swing.JButton btnCetakMhs;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditLp;
     private javax.swing.JButton btnHapus;
@@ -1466,7 +1467,6 @@ File file;
     private javax.swing.JComboBox<String> cbAgama;
     private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JCheckBox cbStatus;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
