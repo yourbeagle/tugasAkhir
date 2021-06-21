@@ -173,7 +173,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="382" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -199,7 +199,7 @@
                                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtRuang" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
                                           <Component id="chDate" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
@@ -207,7 +207,7 @@
                                           <Component id="cbJam" alignment="0" min="-2" pref="298" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="130" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
