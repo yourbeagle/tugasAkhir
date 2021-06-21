@@ -53,6 +53,14 @@ File file;
 
         kelamin = new javax.swing.ButtonGroup();
         root = new javax.swing.JPanel();
+        menutama = new javax.swing.JPanel();
+        btnInput = new javax.swing.JButton();
+        btnEditLp = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        btnHapusLp = new javax.swing.JButton();
+        btHapus1 = new javax.swing.JButton();
+        btnCetakMhs = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -122,14 +130,6 @@ File file;
         btnHapus = new javax.swing.JButton();
         lbImgHps = new javax.swing.JLabel();
         btnBackHps = new javax.swing.JButton();
-        menutama = new javax.swing.JPanel();
-        btnInput = new javax.swing.JButton();
-        btnEditLp = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        btnHapusLp = new javax.swing.JButton();
-        btHapus1 = new javax.swing.JButton();
-        btnCetakMhs = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -139,6 +139,98 @@ File file;
         });
 
         root.setLayout(new java.awt.CardLayout());
+
+        menutama.setBackground(new java.awt.Color(172, 226, 219));
+
+        btnInput.setText("input");
+        btnInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInputActionPerformed(evt);
+            }
+        });
+
+        btnEditLp.setText("Edit");
+        btnEditLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditLpActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
+        jLabel24.setText("Welcome, Silakan Pilih ");
+
+        btnHapusLp.setText("Hapus");
+        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusLpActionPerformed(evt);
+            }
+        });
+
+        btHapus1.setText("Menu Utama");
+        btHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHapus1ActionPerformed(evt);
+            }
+        });
+
+        btnCetakMhs.setText("Cetak Report");
+        btnCetakMhs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakMhsActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel25.setText("Halaman Mahasiswa");
+
+        javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
+        menutama.setLayout(menutamaLayout);
+        menutamaLayout.setHorizontalGroup(
+            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(197, 197, 197)
+                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menutamaLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel24))
+                    .addGroup(menutamaLayout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(jLabel25)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        menutamaLayout.setVerticalGroup(
+            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel24)
+                .addGap(68, 68, 68)
+                .addComponent(jLabel25)
+                .addGap(44, 44, 44)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
+        );
+
+        root.add(menutama, "menuUtama");
 
         Step1.setBackground(new java.awt.Color(172, 226, 219));
 
@@ -800,98 +892,6 @@ File file;
 
         root.add(Hapus, "menuHapus");
 
-        menutama.setBackground(new java.awt.Color(172, 226, 219));
-
-        btnInput.setText("input");
-        btnInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInputActionPerformed(evt);
-            }
-        });
-
-        btnEditLp.setText("Edit");
-        btnEditLp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditLpActionPerformed(evt);
-            }
-        });
-
-        jLabel24.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
-        jLabel24.setText("Welcome, Silakan Pilih ");
-
-        btnHapusLp.setText("Hapus");
-        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHapusLpActionPerformed(evt);
-            }
-        });
-
-        btHapus1.setText("Menu Utama");
-        btHapus1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btHapus1ActionPerformed(evt);
-            }
-        });
-
-        btnCetakMhs.setText("Cetak Report");
-        btnCetakMhs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCetakMhsActionPerformed(evt);
-            }
-        });
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel25.setText("Halaman Mahasiswa");
-
-        javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
-        menutama.setLayout(menutamaLayout);
-        menutamaLayout.setHorizontalGroup(
-            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
-                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123))
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel24))
-                    .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(408, 408, 408)
-                        .addComponent(jLabel25)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        menutamaLayout.setVerticalGroup(
-            menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menutamaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel24)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel25)
-                .addGap(44, 44, 44)
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCetakMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
-        );
-
-        root.add(menutama, "menuUtama");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1157,7 +1157,9 @@ File file;
             String path = new File(".").getCanonicalPath();
             FileUtils.copyFileToDirectory(file, new File(path+"/image"));
             DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+            DefaultTableModel model1 = (DefaultTableModel) tbMahasiswaHps.getModel();
             model.setRowCount(0);
+            model1.setRowCount(0);
             load_table();
             cl.show(root, "menuUtama");
         } catch (Exception e) {
@@ -1197,7 +1199,9 @@ File file;
             String path = new File(".").getCanonicalPath();
             FileUtils.copyFileToDirectory(file, new File(path+"/image"));
             DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+            DefaultTableModel model1 = (DefaultTableModel) tbMahasiswaHps.getModel();
             model.setRowCount(0);
+            model1.setRowCount(0);
             load_table();
             cl.show(root, "menuUtama");
         } catch (Exception e) {
@@ -1314,9 +1318,10 @@ File file;
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Berhasil Delete data");
                 DefaultTableModel model = (DefaultTableModel) tbMahasiswa.getModel();
+                DefaultTableModel model1 = (DefaultTableModel) tbMahasiswaHps.getModel();
                 model.setRowCount(0);
+                model1.setRowCount(0);
                 load_table();
-
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             } 
@@ -1376,12 +1381,14 @@ File file;
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "menuUtama");
+        clearInput();
     }//GEN-LAST:event_btnBackHpsActionPerformed
 
     private void btnBackInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackInputActionPerformed
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "menuUtama");
+        clearInput();
     }//GEN-LAST:event_btnBackInputActionPerformed
 
     private void btHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapus1ActionPerformed

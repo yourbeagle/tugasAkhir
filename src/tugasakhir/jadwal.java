@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Realfi
  */
 public class jadwal extends javax.swing.JFrame {
-String periode,kdmatkul,nmmatkul,waktu,ruang,pengajar,kelas,tglAwal,tglAkhir,tanggal;
+String periode,kdmatkul,nmmatkul,waktu,ruang,pengajar,kelas,tglAwal,tglAkhir,tanggal,kdJadwal,idEdit;
 Connection con;
 PreparedStatement pst;
 Statement stm;
@@ -29,6 +29,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         cbMatkul();
         cbKelas();
         cbPengajar();
+        load_table();
     }
 
     /** 
@@ -40,12 +41,13 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         root = new javax.swing.JPanel();
         menutama = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         btnInputLp = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnEditLp = new javax.swing.JButton();
+        btnHapusLp = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +64,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         jdcAwal = new com.toedter.calendar.JDateChooser();
         jdcAkhir = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
+        lbkdEdit = new javax.swing.JLabel();
         Step2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -75,14 +78,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         cbPengajar = new javax.swing.JComboBox<>();
         btnSubmit = new javax.swing.JButton();
         btnBackSt2 = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         MilihEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbJadwal = new javax.swing.JTable();
+        btnLanjut = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         Hapus = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbJadwalHps = new javax.swing.JTable();
+        btnHapus = new javax.swing.JButton();
+        btnBackHps = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,9 +111,19 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             }
         });
 
-        jButton2.setText("Edit");
+        btnEditLp.setText("Edit");
+        btnEditLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditLpActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Delete");
+        btnHapusLp.setText("Delete");
+        btnHapusLp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusLpActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Cetak");
 
@@ -122,9 +142,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                             .addComponent(btnInputLp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(286, 286, 286)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66))))
         );
         menutamaLayout.setVerticalGroup(
@@ -135,8 +155,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                 .addGap(156, 156, 156)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInputLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
@@ -182,6 +202,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 
         jLabel13.setText("Tanggal Akhir");
 
+        lbkdEdit.setText("jLabel14");
+
         javax.swing.GroupLayout Step1Layout = new javax.swing.GroupLayout(Step1);
         Step1.setLayout(Step1Layout);
         Step1Layout.setHorizontalGroup(
@@ -192,9 +214,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                     .addGroup(Step1Layout.createSequentialGroup()
                         .addComponent(btnBackMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNextSt1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
+                        .addComponent(btnNextSt1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Step1Layout.createSequentialGroup()
                         .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
                             .addGroup(Step1Layout.createSequentialGroup()
@@ -205,27 +226,36 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                             .addComponent(cbKdMatkul, 0, 308, Short.MAX_VALUE)
                             .addComponent(cbPeriode, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
-                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(cbNmMatkul, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(Step1Layout.createSequentialGroup()
-                                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jdcAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jdcAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))))
-                        .addGap(128, 128, 128))))
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Step1Layout.createSequentialGroup()
+                                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6)
+                                    .addComponent(cbNmMatkul, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(Step1Layout.createSequentialGroup()
+                                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jdcAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jdcAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))))
+                                .addGap(88, 88, 88))
+                            .addComponent(lbkdEdit, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(40, 40, 40))
         );
         Step1Layout.setVerticalGroup(
             Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Step1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(55, 55, 55)
+                .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Step1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addGroup(Step1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(lbkdEdit)))
+                .addGap(48, 48, 48)
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5)
@@ -243,7 +273,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbNmMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbKdMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(Step1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNextSt1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBackMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,6 +320,13 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             }
         });
 
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Step2Layout = new javax.swing.GroupLayout(Step2);
         Step2.setLayout(Step2Layout);
         Step2Layout.setHorizontalGroup(
@@ -300,6 +337,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                     .addGroup(Step2Layout.createSequentialGroup()
                         .addComponent(btnBackSt2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))
                     .addGroup(Step2Layout.createSequentialGroup()
@@ -344,9 +383,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                     .addComponent(cbPengajar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbWaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addGroup(Step2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(btnBackSt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Step2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Step2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                        .addComponent(btnBackSt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -378,6 +419,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         });
         jScrollPane1.setViewportView(tbJadwal);
 
+        btnLanjut.setText("Lanjutkan");
+        btnLanjut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLanjutActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("Kembali");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MilihEditLayout = new javax.swing.GroupLayout(MilihEdit);
         MilihEdit.setLayout(MilihEditLayout);
         MilihEditLayout.setHorizontalGroup(
@@ -388,9 +443,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                     .addComponent(jLabel26)
                     .addGroup(MilihEditLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MilihEditLayout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel27)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(55, 55, 55))
         );
         MilihEditLayout.setVerticalGroup(
             MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,10 +461,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(MilihEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLanjut, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        root.add(MilihEdit, "milihEdit");
+        root.add(MilihEdit, "menuEdit");
 
         Hapus.setBackground(new java.awt.Color(172, 226, 219));
 
@@ -414,6 +478,38 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Pilih Data");
 
+        tbJadwalHps.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbJadwalHps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbJadwalHpsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbJadwalHps);
+
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnBackHps.setText("Kembali");
+        btnBackHps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackHpsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout HapusLayout = new javax.swing.GroupLayout(Hapus);
         Hapus.setLayout(HapusLayout);
         HapusLayout.setHorizontalGroup(
@@ -421,12 +517,18 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             .addGroup(HapusLayout.createSequentialGroup()
                 .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(HapusLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel29))
-                    .addGroup(HapusLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel28)))
-                .addGap(851, 851, 851))
+                        .addComponent(jLabel28))
+                    .addGroup(HapusLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel29)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HapusLayout.createSequentialGroup()
+                                .addComponent(btnBackHps, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         HapusLayout.setVerticalGroup(
             HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,7 +537,13 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel29)
-                .addGap(398, 398, 398))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBackHps, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         root.add(Hapus, "menuHapus");
@@ -454,10 +562,51 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void edit()
+    {
+        String sql = "select * from jadwal where kdjadwal=?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            String kdEdit = lbkdEdit.getText();
+            pst.setString(1, kdEdit);
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                btnEdit.setEnabled(true);
+                btnSubmit.setEnabled(false);
+            }
+            else{
+                btnEdit.setEnabled(false);
+                btnSubmit.setEnabled(true);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    public void clearInput()
+    {
+        try {
+            jdcAwal.setDate(null);
+            jdcAkhir.setDate(null);
+        } catch (Exception e) {
+        }
+        
+        cbPeriode.setSelectedIndex(0);
+        cbKdMatkul.setSelectedIndex(0);
+        cbNmMatkul.setSelectedIndex(0);
+        cbKelas.setSelectedIndex(0);
+        cbWaktu.setSelectedIndex(0);
+        cbRuang.setSelectedIndex(0);
+        cbPengajar.setSelectedIndex(0);
+    }
+    
     public void load_table()
     {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("No");
+        model.addColumn("kdJadwal");
         model.addColumn("Periode");
         model.addColumn("Tanggal");
         model.addColumn("Kode Matkul");
@@ -481,12 +630,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                 model.addRow(
                 new Object[]
                 {
-                    no++,rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)
+                    no++,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)
                 }
                 );
             }
             tbJadwal.setModel(model);
-//            tbMahasiswaHps.setModel(model);
+            tbJadwalHps.setModel(model);
         }
         catch(Exception e)
         {
@@ -500,16 +649,18 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         periode = cbPeriode.getSelectedItem().toString();
         kdmatkul = cbKdMatkul.getSelectedItem().toString();
         nmmatkul = cbNmMatkul.getSelectedItem().toString();
-        if(jdcAwal.getDate() == null || jdcAkhir.getDate() == null)
+        edit();
+        if(jdcAwal.getDate() == null &&  jdcAkhir.getDate() == null )
         {
             JOptionPane.showMessageDialog(null, "Harap Isi Tanggal Terlebih Dahulu");
         }
         else
-        {
+        {    
             tglAwal = sdf.format(jdcAwal.getDate());
             tglAkhir = sdf.format(jdcAkhir.getDate());
             cl.show(root, "step2");
-        }
+        }  
+        
         
         
     }//GEN-LAST:event_btnNextSt1ActionPerformed
@@ -518,13 +669,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         // TODO add your handling code here:
         String sql ="insert into jadwal(periode,tanggal,kdmatkul,nmmatkul,kelas,waktu,ruang,pengajar) values (?,?,?,?,?,?,?,?)";
         try {
-            
-            
+            CardLayout cl = (CardLayout) root.getLayout();
             kelas = cbKelas.getSelectedItem().toString();
             ruang = cbRuang.getSelectedItem().toString();
             pengajar = cbPengajar.getSelectedItem().toString();
-            waktu = cbWaktu.getSelectedItem().toString();
-            
+            waktu = cbWaktu.getSelectedItem().toString();    
             tanggal = tglAwal+" s/d "+tglAkhir;
             pst = con.prepareStatement(sql);
             pst.setString(1, periode);
@@ -537,6 +686,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             pst.setString(8, pengajar);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Berhasil Input Data");
+            DefaultTableModel model = (DefaultTableModel) tbJadwal.getModel();
+            DefaultTableModel model1 = (DefaultTableModel) tbJadwalHps.getModel();
+            model.setRowCount(0);
+            model1.setRowCount(0);
+            load_table();
+            cl.show(root, "menuUtama");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -547,16 +702,53 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step1");
         cbPeriode.setSelectedItem(periode);
+        kdmatkul = cbKdMatkul.getSelectedItem().toString();
+        nmmatkul = cbNmMatkul.getSelectedItem().toString();
+        try {
+            jdcAwal.setDate(sdf.parse(tglAwal));
+            jdcAkhir.setDate(sdf.parse(tglAkhir));
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnBackSt2ActionPerformed
 
     private void btnBackMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackMenuActionPerformed
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
+        clearInput();
         cl.show(root, "menuUtama");
     }//GEN-LAST:event_btnBackMenuActionPerformed
 
     private void tbJadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbJadwalMouseClicked
         // TODO add your handling code here:
+        int baris = tbJadwal.rowAtPoint(evt.getPoint());
+        kdJadwal = tbJadwal.getValueAt(baris, 1).toString();
+        periode = tbJadwal.getValueAt(baris, 2).toString();
+        tanggal = tbJadwal.getValueAt(baris, 3).toString();
+        kdmatkul = tbJadwal.getValueAt(baris, 4).toString();
+        nmmatkul = tbJadwal.getValueAt(baris, 5).toString();
+        kelas = tbJadwal.getValueAt(baris, 6).toString();
+        waktu = tbJadwal.getValueAt(baris, 7).toString();
+        ruang = tbJadwal.getValueAt(baris, 8).toString();
+        pengajar = tbJadwal.getValueAt(baris, 9).toString();
+        
+        String[] tglEdit = tanggal.split("s/d ",2);
+        tglAwal = tglEdit[0];
+        tglAkhir = tglEdit[1];
+        
+        try {
+            jdcAwal.setDate(sdf.parse(tglAwal));
+            jdcAkhir.setDate(sdf.parse(tglAkhir));
+        } catch (Exception e) {
+        }
+        lbkdEdit.setText(kdJadwal);
+        cbPeriode.setSelectedItem(periode);
+        cbKdMatkul.setSelectedItem(kdmatkul);
+        cbNmMatkul.setSelectedItem(nmmatkul);
+        cbKelas.setSelectedItem(kelas);
+        cbWaktu.setSelectedItem(waktu);
+        cbRuang.setSelectedItem(ruang);
+        cbPengajar.setSelectedItem(pengajar);
+        
     }//GEN-LAST:event_tbJadwalMouseClicked
 
     private void btnInputLpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputLpActionPerformed
@@ -564,6 +756,116 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step1");
     }//GEN-LAST:event_btnInputLpActionPerformed
+
+    private void btnEditLpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLpActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout)root.getLayout();
+        cl.show(root, "menuEdit");
+    }//GEN-LAST:event_btnEditLpActionPerformed
+
+    private void btnLanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanjutActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "step1");
+    }//GEN-LAST:event_btnLanjutActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout)root.getLayout();
+        cl.show(root, "menuUtama");
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        String sql = "update jadwal set periode=?, tanggal=?, kdmatkul=?, nmmatkul=?, kelas=?, waktu=?, ruang=?, pengajar=? where kdjadwal=?";
+        try {
+            CardLayout cl = (CardLayout) root.getLayout();
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            kelas = cbKelas.getSelectedItem().toString();
+            ruang = cbRuang.getSelectedItem().toString();
+            pengajar = cbPengajar.getSelectedItem().toString();
+            waktu = cbWaktu.getSelectedItem().toString();
+            kdJadwal = lbkdEdit.getText();
+            tanggal = tglAwal+" s/d "+tglAkhir;
+            pst = con.prepareStatement(sql);
+            pst.setString(1, periode);
+            pst.setString(2, tanggal);
+            pst.setString(3, kdmatkul);
+            pst.setString(4, nmmatkul);
+            pst.setString(5, kelas);
+            pst.setString(6, waktu);
+            pst.setString(7, ruang);
+            pst.setString(8, pengajar);
+            pst.setString(9, kdJadwal);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil Update Data");
+            DefaultTableModel model = (DefaultTableModel) tbJadwal.getModel();
+            DefaultTableModel model1 = (DefaultTableModel) tbJadwalHps.getModel();
+            model.setRowCount(0);
+            model1.setRowCount(0);
+            load_table();
+            cl.show(root, "menuUtama");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void tbJadwalHpsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbJadwalHpsMouseClicked
+        // TODO add your handling code here:
+        int baris = tbJadwal.rowAtPoint(evt.getPoint());
+        kdJadwal = tbJadwal.getValueAt(baris, 1).toString();
+        periode = tbJadwal.getValueAt(baris, 2).toString();
+        tanggal = tbJadwal.getValueAt(baris, 3).toString();
+        kdmatkul = tbJadwal.getValueAt(baris, 4).toString();
+        nmmatkul = tbJadwal.getValueAt(baris, 5).toString();
+        kelas = tbJadwal.getValueAt(baris, 6).toString();
+        waktu = tbJadwal.getValueAt(baris, 7).toString();
+        ruang = tbJadwal.getValueAt(baris, 8).toString();
+        pengajar = tbJadwal.getValueAt(baris, 9).toString();
+    }//GEN-LAST:event_tbJadwalHpsMouseClicked
+
+    private void btnHapusLpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusLpActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuHapus"); 
+    }//GEN-LAST:event_btnHapusLpActionPerformed
+
+    private void btnBackHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHpsActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        cl.show(root, "menuUtama"); 
+    }//GEN-LAST:event_btnBackHpsActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        String sql = "delete from jadwal where kdjadwal=?";
+        int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus ini ?","Confirm Delete",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if (option == JOptionPane.YES_OPTION)
+        {
+            try {
+                con = config.configDB();
+                pst = con.prepareStatement(sql);
+                pst.setString(1, kdJadwal);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Berhasil Delete data");
+                DefaultTableModel model = (DefaultTableModel) tbJadwal.getModel();
+                DefaultTableModel model1 = (DefaultTableModel) tbJadwalHps.getModel();
+                model.setRowCount(0);
+                model1.setRowCount(0);
+                load_table();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } 
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Tidak jadi Delete");
+        }
+        
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -623,6 +925,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     
     public void cbPengajar()
     {
+        lbkdEdit.setVisible(false);
         try {
             con = config.configDB();
             String sql = "select * from dosen";
@@ -677,9 +980,16 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     private javax.swing.JPanel MilihEdit;
     private javax.swing.JPanel Step1;
     private javax.swing.JPanel Step2;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBackHps;
     private javax.swing.JButton btnBackMenu;
     private javax.swing.JButton btnBackSt2;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnEditLp;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHapusLp;
     private javax.swing.JButton btnInputLp;
+    private javax.swing.JButton btnLanjut;
     private javax.swing.JButton btnNextSt1;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cbKdMatkul;
@@ -689,8 +999,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     private javax.swing.JComboBox<String> cbPeriode;
     private javax.swing.JComboBox<String> cbRuang;
     private javax.swing.JComboBox<String> cbWaktu;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -710,11 +1018,15 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private com.toedter.calendar.JDateChooser jdcAkhir;
     private com.toedter.calendar.JDateChooser jdcAwal;
+    private javax.swing.JLabel lbkdEdit;
     private javax.swing.JPanel menutama;
     private javax.swing.JPanel root;
     private javax.swing.JTable tbJadwal;
+    private javax.swing.JTable tbJadwalHps;
     // End of variables declaration//GEN-END:variables
 }
