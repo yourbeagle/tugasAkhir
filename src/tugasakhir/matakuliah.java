@@ -49,9 +49,9 @@ ResultSet rs;
         jLabel7 = new javax.swing.JLabel();
         txtMatkul = new javax.swing.JTextField();
         btInputt = new javax.swing.JButton();
-        txtPeriode = new javax.swing.JTextField();
         cbMatkul = new javax.swing.JComboBox<>();
         btInputt1 = new javax.swing.JButton();
+        cbPeriode = new javax.swing.JComboBox<>();
         MilehEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,9 +72,9 @@ ResultSet rs;
         jLabel8 = new javax.swing.JLabel();
         txtMatkul1 = new javax.swing.JTextField();
         bteditlan = new javax.swing.JButton();
-        txtPeriode1 = new javax.swing.JTextField();
         cbMatkul1 = new javax.swing.JComboBox<>();
         bteditlan1 = new javax.swing.JButton();
+        cbPeriode1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,8 +195,6 @@ ResultSet rs;
             }
         });
 
-        txtPeriode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         cbMatkul.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbMatkul.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Salah Satu", "Sistem Operasi", "Analisis dan Desain Berorientasi Object", "Computer Graphic", "Arsitektur Komputer", "Jaringan Komputer", "Sistem Berkas", "Basis Data", "Pemrograman Bahasa X", "Pemrograman Jaringan", "Pemrograman Web", "User Interface Design" }));
 
@@ -208,38 +206,41 @@ ResultSet rs;
             }
         });
 
+        cbPeriode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbPeriode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019 Ganjil", "2019 Genap", "2020 Ganjil", "2020 Genap", "20201 Ganjil" }));
+
         javax.swing.GroupLayout inputLayout = new javax.swing.GroupLayout(input);
         input.setLayout(inputLayout);
         inputLayout.setHorizontalGroup(
             inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inputLayout.createSequentialGroup()
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, inputLayout.createSequentialGroup()
                         .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addContainerGap(762, Short.MAX_VALUE))
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, inputLayout.createSequentialGroup()
+                                    .addGap(31, 31, 31)
+                                    .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(inputLayout.createSequentialGroup()
+                                    .addGap(19, 19, 19)
+                                    .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inputLayout.createSequentialGroup()
-                                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, inputLayout.createSequentialGroup()
-                                            .addGap(31, 31, 31)
-                                            .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(inputLayout.createSequentialGroup()
-                                            .addGap(19, 19, 19)
-                                            .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(139, 139, 139)
                                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(txtPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(cbPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         inputLayout.setVerticalGroup(
             inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,25 +251,19 @@ ResultSet rs;
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
-                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7))
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPeriode, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(cbMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputLayout.createSequentialGroup()
-                        .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputLayout.createSequentialGroup()
-                        .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
 
         root.add(input, "input");
@@ -436,8 +431,6 @@ ResultSet rs;
             }
         });
 
-        txtPeriode1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         cbMatkul1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbMatkul1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Salah Satu", "Sistem Operasi", "Analisis dan Desain Berorientasi Object", "Computer Graphic", "Arsitektur Komputer", "Jaringan Komputer", "Sistem Berkas", "Basis Data", "Pemrograman Bahasa X", "Pemrograman Jaringan", "Pemrograman Web", "User Interface Design" }));
 
@@ -449,6 +442,9 @@ ResultSet rs;
             }
         });
 
+        cbPeriode1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbPeriode1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019 Ganjil", "2019 Genap", "2020 Ganjil", "2020 Genap", "20201 Ganjil" }));
+
         javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
         edit.setLayout(editLayout);
         editLayout.setHorizontalGroup(
@@ -456,31 +452,29 @@ ResultSet rs;
             .addGroup(editLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editLayout.createSequentialGroup()
-                        .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addContainerGap(778, Short.MAX_VALUE))
-                    .addGroup(editLayout.createSequentialGroup()
-                        .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bteditlan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(editLayout.createSequentialGroup()
-                                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editLayout.createSequentialGroup()
-                                            .addGap(31, 31, 31)
-                                            .addComponent(txtMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(editLayout.createSequentialGroup()
-                                            .addGap(19, 19, 19)
-                                            .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(bteditlan1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cbMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(139, 139, 139)
-                                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtPeriode1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(bteditlan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(editLayout.createSequentialGroup()
+                            .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editLayout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(txtMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(editLayout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(editLayout.createSequentialGroup()
+                                                .addGap(16, 16, 16)
+                                                .addComponent(bteditlan1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGap(139, 139, 139)
+                            .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(cbPeriode1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         editLayout.setVerticalGroup(
             editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,22 +485,22 @@ ResultSet rs;
                 .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel6))
-                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(txtMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel8))
-                    .addGroup(editLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPeriode1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPeriode1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(cbMatkul1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bteditlan1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bteditlan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGroup(editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editLayout.createSequentialGroup()
+                        .addComponent(bteditlan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editLayout.createSequentialGroup()
+                        .addComponent(bteditlan1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))))
         );
 
         root.add(edit, "edit");
@@ -584,8 +578,10 @@ ResultSet rs;
         cl.show(root, "menu");
         txtMatkul.setText("");
         txtMatkul1.setText("");
-        txtPeriode.setText("");
-        txtPeriode1.setText("");
+        //txtPeriode.setText("");
+        //txtPeriode1.setText("");
+        cbPeriode.setSelectedItem("2019 Ganjil");
+        cbPeriode1.setSelectedItem("2019 Ganjil");
         cbMatkul.setSelectedItem("Pilih Salah Satu");
         cbMatkul1.setSelectedItem("Pilih Salah Satu");
     }
@@ -608,7 +604,7 @@ ResultSet rs;
 
     private void btInputtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputtActionPerformed
         kdMatkul = txtMatkul.getText().toString();
-        periode = txtPeriode.getText().toString();
+        periode = cbPeriode.getSelectedItem().toString();
         nmMatkul = cbMatkul.getSelectedItem().toString();
         String sql="insert into matakuliah(kdMatkul,periode,nmMatkul) values (?,?,?)";
         try {
@@ -635,7 +631,7 @@ ResultSet rs;
         String idp = tbEdit.getValueAt(index, 1).toString();
         String idn = tbEdit.getValueAt(index, 2).toString();
         txtMatkul1.setText(id);
-        txtPeriode1.setText(idp);
+        cbPeriode1.setSelectedItem(idp);
         cbMatkul1.setSelectedItem(idn);
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "edit");
@@ -643,7 +639,7 @@ ResultSet rs;
 
     private void bteditlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bteditlanActionPerformed
         kdMatkul = txtMatkul1.getText();
-        periode = txtPeriode1.getText();
+        periode = cbPeriode1.getSelectedItem().toString();
         nmMatkul = cbMatkul1.getSelectedItem().toString();
         
         String sqle="UPDATE `matakuliah` SET `periode`=?,`nmMatkul`=? WHERE `kdMatkul`=?";
@@ -763,6 +759,8 @@ ResultSet rs;
     private javax.swing.JButton bteditlan1;
     private javax.swing.JComboBox<String> cbMatkul;
     private javax.swing.JComboBox<String> cbMatkul1;
+    private javax.swing.JComboBox<String> cbPeriode;
+    private javax.swing.JComboBox<String> cbPeriode1;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel input;
     private javax.swing.JButton jButton1;
@@ -788,7 +786,5 @@ ResultSet rs;
     private javax.swing.JTable tbHapus;
     private javax.swing.JTextField txtMatkul;
     private javax.swing.JTextField txtMatkul1;
-    private javax.swing.JTextField txtPeriode;
-    private javax.swing.JTextField txtPeriode1;
     // End of variables declaration//GEN-END:variables
 }
