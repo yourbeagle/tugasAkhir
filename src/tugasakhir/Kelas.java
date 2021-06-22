@@ -26,7 +26,7 @@ Connection con;
 PreparedStatement pst;
 Statement stm;
 ResultSet rs;
-SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-mm-dd");
+SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy-MM-dd");
 java.util.Date tgll;
 
     public Kelas() {

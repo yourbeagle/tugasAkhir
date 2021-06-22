@@ -1013,26 +1013,27 @@ File file;
         }
         agama = cbAgama.getSelectedItem().toString();
         notelp = txtPhone.getText();
+        
+    //    String sql = "select nrp from mahasiswa";
+    //    try {
+    //        con = config.configDB();
+    //        stm = con.createStatement();
+    //        rs = stm.executeQuery(sql);
+    //        if (rs.next())
+    //        {
+    //            if(txtNrp.getText().equals(rs.getString(1)) || txtNrp.getText() != "")
+    //            {
+    //                txtNrp.setEditable(false);
+    //            }
+    //            else
+    //            {
+    //                 txtNrp.setEditable(true);
+    //            }
+    //        }
+    //       
+    //    } catch (Exception e) {
+    //    }
         cl.show(root, "step2");
-        String sql = "select nrp from mahasiswa";
-        try {
-            con = config.configDB();
-            stm = con.createStatement();
-            rs = stm.executeQuery(sql);
-            if (rs.next())
-            {
-                if(txtNrp.getText().equals(rs.getString(1)) || txtNrp.getText() != "")
-                {
-                    txtNrp.setEditable(false);
-                }
-                else
-                {
-                    txtNrp.setEditable(true);
-                }
-            }
-           
-        } catch (Exception e) {
-        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void cbProdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdiActionPerformed

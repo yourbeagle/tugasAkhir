@@ -46,6 +46,7 @@ ResultSet rs;
         mnKelas = new javax.swing.JMenu();
         mnDosen = new javax.swing.JMenu();
         mnMatakuliah = new javax.swing.JMenu();
+        mnJadwal = new javax.swing.JMenu();
         mnLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,6 +169,14 @@ ResultSet rs;
         });
         jMenuBar2.add(mnMatakuliah);
 
+        mnJadwal.setText("Jadwal");
+        mnJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnJadwalMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(mnJadwal);
+
         mnLogout.setText("Logout");
         mnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,7 +205,7 @@ ResultSet rs;
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        ceklogin();
+       // ceklogin();
     }//GEN-LAST:event_formWindowActivated
 
     private void mnKelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnKelasMouseClicked
@@ -230,6 +239,12 @@ ResultSet rs;
         mahasiswa mhw = new mahasiswa();
         mhw.setVisible(true);
     }//GEN-LAST:event_mnMhwaMouseClicked
+
+    private void mnJadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnJadwalMouseClicked
+        this.dispose();
+        jadwal mhw = new jadwal();
+        mhw.setVisible(true);
+    }//GEN-LAST:event_mnJadwalMouseClicked
 
     
     /**
@@ -302,6 +317,7 @@ ResultSet rs;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel lbUser;
     private javax.swing.JMenu mnDosen;
+    private javax.swing.JMenu mnJadwal;
     private javax.swing.JMenu mnKelas;
     private javax.swing.JMenu mnLogout;
     private javax.swing.JMenu mnMatakuliah;

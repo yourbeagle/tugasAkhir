@@ -55,6 +55,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         btnEditLp = new javax.swing.JButton();
         btnHapusLp = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        btHapus1 = new javax.swing.JButton();
         Step1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -138,25 +139,37 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
             }
         });
 
+        btHapus1.setText("Menu Utama");
+        btHapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHapus1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menutamaLayout = new javax.swing.GroupLayout(menutama);
         menutama.setLayout(menutamaLayout);
         menutamaLayout.setHorizontalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menutamaLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menutamaLayout.createSequentialGroup()
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menutamaLayout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                            .addComponent(btnInputLp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(286, 286, 286)
-                        .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
-                        .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))))
+                        .addGap(115, 115, 115)
+                        .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menutamaLayout.createSequentialGroup()
+                                .addComponent(btnInputLp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(171, 171, 171)
+                                .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                                .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menutamaLayout.createSequentialGroup()
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(167, 167, 167))))
         );
         menutamaLayout.setVerticalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +181,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
                     .addComponent(btnInputLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapusLp, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69))
         );
 
         root.add(menutama, "menuUtama");
@@ -892,6 +907,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapus1ActionPerformed
+        this.dispose();
+        landingpage lp = new landingpage();
+        lp.setVisible(true);
+    }//GEN-LAST:event_btHapus1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1005,6 +1026,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
     private javax.swing.JPanel MilihEdit;
     private javax.swing.JPanel Step1;
     private javax.swing.JPanel Step2;
+    private javax.swing.JButton btHapus1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBackHps;
     private javax.swing.JButton btnBackMenu;

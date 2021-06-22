@@ -56,6 +56,14 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnMatakuliahMouseClicked"/>
           </Events>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="mnJadwal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Jadwal"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnJadwalMouseClicked"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="mnLogout">
           <Properties>
             <Property name="text" type="java.lang.String" value="Logout"/>
