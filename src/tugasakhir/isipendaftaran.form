@@ -191,24 +191,19 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="btInputt1" min="-2" pref="98" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="555" max="32767" attributes="0"/>
                               <Component id="btInputt" min="-2" pref="98" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                              <Component id="cbNRP" min="-2" pref="313" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="txnrp" min="-2" pref="218" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -222,9 +217,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="cbNRP" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace pref="196" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txnrp" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace pref="188" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btInputt" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="btInputt1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
@@ -262,35 +257,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInputtActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbNRP">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="12">
-                    <StringItem index="0" value="Pilih Salah Satu"/>
-                    <StringItem index="1" value="Sistem Operasi"/>
-                    <StringItem index="2" value="Analisis dan Desain Berorientasi Object"/>
-                    <StringItem index="3" value="Computer Graphic"/>
-                    <StringItem index="4" value="Arsitektur Komputer"/>
-                    <StringItem index="5" value="Jaringan Komputer"/>
-                    <StringItem index="6" value="Sistem Berkas"/>
-                    <StringItem index="7" value="Basis Data"/>
-                    <StringItem index="8" value="Pemrograman Bahasa X"/>
-                    <StringItem index="9" value="Pemrograman Jaringan"/>
-                    <StringItem index="10" value="Pemrograman Web"/>
-                    <StringItem index="11" value="User Interface Design"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbNRPActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JButton" name="btInputt1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -308,6 +274,11 @@
                   <Font name="Calibri" size="26" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="- Step 1 of 2"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txnrp">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextField1"/>
               </Properties>
             </Component>
           </SubComponents>

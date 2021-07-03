@@ -92,9 +92,9 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btInputt = new javax.swing.JButton();
-        cbNRP = new javax.swing.JComboBox<>();
         btInputt1 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
+        txnrp = new javax.swing.JTextField();
         input1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -232,14 +232,6 @@ public class isipendaftaran extends javax.swing.JFrame {
             }
         });
 
-        cbNRP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbNRP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Salah Satu", "Sistem Operasi", "Analisis dan Desain Berorientasi Object", "Computer Graphic", "Arsitektur Komputer", "Jaringan Komputer", "Sistem Berkas", "Basis Data", "Pemrograman Bahasa X", "Pemrograman Jaringan", "Pemrograman Web", "User Interface Design" }));
-        cbNRP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbNRPActionPerformed(evt);
-            }
-        });
-
         btInputt1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btInputt1.setText("Home");
         btInputt1.addActionListener(new java.awt.event.ActionListener() {
@@ -250,6 +242,8 @@ public class isipendaftaran extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel22.setText("- Step 1 of 2");
+
+        txnrp.setText("jTextField1");
 
         javax.swing.GroupLayout inputLayout = new javax.swing.GroupLayout(input);
         input.setLayout(inputLayout);
@@ -266,18 +260,15 @@ public class isipendaftaran extends javax.swing.JFrame {
                     .addGroup(inputLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
                         .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))))
             .addGroup(inputLayout.createSequentialGroup()
+                .addGap(269, 269, 269)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(jLabel7))
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(cbNRP, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(345, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(txnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inputLayout.setVerticalGroup(
             inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,9 +279,9 @@ public class isipendaftaran extends javax.swing.JFrame {
                     .addComponent(jLabel22))
                 .addGap(161, 161, 161)
                 .addComponent(jLabel7)
-                .addGap(11, 11, 11)
-                .addComponent(cbNRP, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -592,6 +583,7 @@ public class isipendaftaran extends javax.swing.JFrame {
     private void btInputtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputtActionPerformed
  CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step2");
+        lblnrp.setText(txnrp.getText());
     }//GEN-LAST:event_btInputtActionPerformed
 
     private void btInputt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputt1ActionPerformed
@@ -630,10 +622,6 @@ public class isipendaftaran extends javax.swing.JFrame {
         cl.show(root, "menu");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void cbNRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNRPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbNRPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -684,7 +672,6 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JButton btInputt1;
     private javax.swing.JButton btInputt2;
     private javax.swing.JButton btInputt3;
-    private javax.swing.JComboBox<String> cbNRP;
     private javax.swing.JPanel input;
     private javax.swing.JPanel input1;
     private javax.swing.JButton jButton1;
@@ -712,5 +699,6 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JTable tbHapus;
     private javax.swing.JTextField txipk;
     private javax.swing.JTextField txjudul;
+    private javax.swing.JTextField txnrp;
     // End of variables declaration//GEN-END:variables
 }
