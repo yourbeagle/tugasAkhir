@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package tugasakhir;
-
+import java.awt.Toolkit;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import org.apache.commons.io.FileUtils;
 /**
  *
  * @author Realfi
  */
 public class pendaftaran extends javax.swing.JFrame {
-
+JFileChooser jfc;
+File file;
     /**
      * Creates new form pendaftaran
      */

@@ -25,6 +25,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Realfi
  */
 public class isipendaftaran extends javax.swing.JFrame {
+    String idwisuda,nrp,namamhs,nip,namadsn,prodi,ipk,judul;
     Connection con;
     PreparedStatement pst;
     Statement stm;
@@ -34,6 +35,7 @@ public class isipendaftaran extends javax.swing.JFrame {
      */
     public isipendaftaran() {
         initComponents();
+        load_table();
     }
 
     /**
@@ -43,13 +45,50 @@ public class isipendaftaran extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    public void clear()
+    {
+        idwisuda = null;
+        txtNipDosen.setText("");
+        txtNrpMhs.setText("");
+        labelMhs.setText("");
+        labelDosen.setText("");
+        txtIpk.setText("");
+        txtJudul.setText("");
+        cbProdi.setSelectedIndex(0);
+    }
+    
+    public void Edit()
+    {
+        String sql = "select * from pendaftaran where idwisuda=?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, idwisuda);
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                btnEdit.setEnabled(true);
+                btnSubmit.setEnabled(false);
+            }
+            else
+            {
+                btnEdit.setEnabled(false);
+                btnSubmit.setEnabled(true);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     public void load_table()
     {
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
         model.addColumn("ID Wisuda");
         model.addColumn("NRP");
+        model.addColumn("Nama Mahasiswa");
         model.addColumn("Prodi");
         model.addColumn("Dosen");
+        model.addColumn("Nama Dosen");
         model.addColumn("IPK");
         model.addColumn("Judul");
         try {
@@ -64,7 +103,7 @@ public class isipendaftaran extends javax.swing.JFrame {
                 model.addRow(
                 new Object[]
                 {
-                    no++,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                    no++,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
                 }
                 );
             }
@@ -92,20 +131,27 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btInputt = new javax.swing.JButton();
-        btInputt1 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
-        txnrp = new javax.swing.JTextField();
+        txtNrpMhs = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtNipDosen = new javax.swing.JTextField();
+        labelMhs = new javax.swing.JLabel();
+        labelDosen = new javax.swing.JLabel();
+        btnVerifMhs = new javax.swing.JButton();
+        btnVerifDsn = new javax.swing.JButton();
         input1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        btInputt2 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         btInputt3 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
-        lblnrp = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txipk = new javax.swing.JTextField();
-        txjudul = new javax.swing.JTextField();
+        txtIpk = new javax.swing.JTextField();
+        txtJudul = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cbProdi = new javax.swing.JComboBox<>();
+        btnEdit = new javax.swing.JButton();
         MilehEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -118,8 +164,8 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbHapus = new javax.swing.JTable();
-        btHapuss = new javax.swing.JButton();
-        btHapuss1 = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnHpsHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,28 +218,28 @@ public class isipendaftaran extends javax.swing.JFrame {
         menutama.setLayout(menutamaLayout);
         menutamaLayout.setHorizontalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutamaLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(130, 130, 130))
             .addGroup(menutamaLayout.createSequentialGroup()
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menutamaLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel24))
                     .addGroup(menutamaLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(btInput, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157)
+                        .addGap(393, 393, 393)
                         .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144)
+                        .addGap(180, 180, 180)
                         .addComponent(btHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menutamaLayout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(jLabel25)))
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
+            .addGroup(menutamaLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btInput, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
         );
         menutamaLayout.setVerticalGroup(
             menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,7 +253,7 @@ public class isipendaftaran extends javax.swing.JFrame {
                     .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btInput, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addGroup(menutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,7 +268,7 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel3.setText("Input Data ");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("NRP");
+        jLabel7.setText("Nama Mahsiswa");
 
         btInputt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btInputt.setText("Next");
@@ -232,18 +278,36 @@ public class isipendaftaran extends javax.swing.JFrame {
             }
         });
 
-        btInputt1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btInputt1.setText("Home");
-        btInputt1.addActionListener(new java.awt.event.ActionListener() {
+        btnHome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInputt1ActionPerformed(evt);
+                btnHomeActionPerformed(evt);
             }
         });
 
         jLabel22.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel22.setText("- Step 1 of 2");
 
-        txnrp.setText("jTextField1");
+        jLabel1.setText("Nama Dosen");
+
+        labelMhs.setText("jLabel2");
+
+        labelDosen.setText("jLabel5");
+
+        btnVerifMhs.setText("Verifikasi");
+        btnVerifMhs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifMhsActionPerformed(evt);
+            }
+        });
+
+        btnVerifDsn.setText("Verifikasi");
+        btnVerifDsn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifDsnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout inputLayout = new javax.swing.GroupLayout(input);
         input.setLayout(inputLayout);
@@ -253,22 +317,34 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inputLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
+                        .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))
+                    .addGroup(inputLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(inputLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
-                        .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(inputLayout.createSequentialGroup()
-                .addGap(269, 269, 269)
+                .addGap(246, 246, 246)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(txnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addGroup(inputLayout.createSequentialGroup()
+                        .addComponent(txtNipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVerifDsn)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelDosen))
+                    .addGroup(inputLayout.createSequentialGroup()
+                        .addComponent(txtNrpMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVerifMhs)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelMhs)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         inputLayout.setVerticalGroup(
             inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,14 +353,24 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel22))
-                .addGap(161, 161, 161)
+                .addGap(96, 96, 96)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNrpMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMhs)
+                    .addComponent(btnVerifMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDosen)
+                    .addComponent(btnVerifDsn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btInputt1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55))
         );
 
@@ -295,14 +381,11 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
         jLabel4.setText("Input Data ");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("NRP");
-
-        btInputt2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btInputt2.setText("Finish");
-        btInputt2.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInputt2ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -317,13 +400,28 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel23.setText("- Step 2 of 2");
 
-        lblnrp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("IPK");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("JUDUL");
+
+        txtIpk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIpkActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("PRODI");
+
+        cbProdi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Prodi", "TI", "SI", "MI", "DKV" }));
+
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout input1Layout = new javax.swing.GroupLayout(input1);
         input1.setLayout(input1Layout);
@@ -333,52 +431,60 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(input1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel23)
+                        .addGap(0, 652, Short.MAX_VALUE))
+                    .addGroup(input1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(btInputt3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
-                        .addComponent(btInputt2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))))
+            .addGroup(input1Layout.createSequentialGroup()
+                .addGap(228, 228, 228)
+                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(input1Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(txtIpk, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10)
                     .addGroup(input1Layout.createSequentialGroup()
                         .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(input1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel23))
-                            .addGroup(input1Layout.createSequentialGroup()
-                                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addGap(70, 70, 70)
-                                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txjudul, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txipk, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel2))
+                        .addGap(85, 85, 85)
+                        .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtJudul, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         input1Layout.setVerticalGroup(
             input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(input1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, input1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel23))
-                .addGap(33, 33, 33)
-                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(lblnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88)
+                .addGap(98, 98, 98)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txipk, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIpk, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txjudul, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                    .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btInputt2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btInputt3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btInputt3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55))
         );
 
@@ -400,6 +506,11 @@ public class isipendaftaran extends javax.swing.JFrame {
                 "NRP", "Nama", "Agama", "Jenis Kelamin", "Alamat", "Email", "Nomer Hp", "Prodi", "Status", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
         ));
+        tbEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEditMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbEdit);
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -423,19 +534,19 @@ public class isipendaftaran extends javax.swing.JFrame {
         MilehEdit.setLayout(MilehEditLayout);
         MilehEditLayout.setHorizontalGroup(
             MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MilehEditLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btEditt, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
             .addGroup(MilehEditLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MilehEditLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel27))
-                    .addComponent(jLabel26))
+                    .addComponent(jLabel26)
+                    .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MilehEditLayout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btEditt, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         MilehEditLayout.setVerticalGroup(
@@ -447,10 +558,10 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btEditt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(MilehEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEditt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -475,19 +586,24 @@ public class isipendaftaran extends javax.swing.JFrame {
                 "NRP", "Nama", "Agama", "Jenis Kelamin", "Alamat", "Email", "Nomer Hp", "Prodi", "Status", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
         ));
+        tbHapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbHapusMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbHapus);
 
-        btHapuss.setText("Hapus");
-        btHapuss.addActionListener(new java.awt.event.ActionListener() {
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btHapussActionPerformed(evt);
+                btnHapusActionPerformed(evt);
             }
         });
 
-        btHapuss1.setText("Home");
-        btHapuss1.addActionListener(new java.awt.event.ActionListener() {
+        btnHpsHome.setText("Home");
+        btnHpsHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btHapuss1ActionPerformed(evt);
+                btnHpsHomeActionPerformed(evt);
             }
         });
 
@@ -497,36 +613,30 @@ public class isipendaftaran extends javax.swing.JFrame {
             MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MilehHapusLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MilehHapusLayout.createSequentialGroup()
-                        .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MilehHapusLayout.createSequentialGroup()
-                                .addComponent(btHapuss1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(615, 615, 615)
-                                .addComponent(btHapuss, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MilehHapusLayout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel28)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(MilehHapusLayout.createSequentialGroup()
-                        .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29))
-                        .addGap(0, 64, Short.MAX_VALUE))))
+                        .addComponent(btnHpsHome, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(655, 655, 655)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel29)))
+                .addGap(0, 64, Short.MAX_VALUE))
         );
         MilehHapusLayout.setVerticalGroup(
             MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MilehHapusLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(MilehHapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btHapuss, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btHapuss1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHpsHome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -581,35 +691,58 @@ public class isipendaftaran extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btInputtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputtActionPerformed
- CardLayout cl = (CardLayout) root.getLayout();
+        CardLayout cl = (CardLayout) root.getLayout();
+        Edit();
         cl.show(root, "step2");
-        lblnrp.setText(txnrp.getText());
     }//GEN-LAST:event_btInputtActionPerformed
 
-    private void btInputt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputt1ActionPerformed
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
+        clear();
         cl.show(root, "menu");
-    }//GEN-LAST:event_btInputt1ActionPerformed
+    }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btEdittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEdittActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         cl.show(root, "step1");
     }//GEN-LAST:event_btEdittActionPerformed
 
-    private void btHapussActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapussActionPerformed
-        
-    }//GEN-LAST:event_btHapussActionPerformed
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        String sql = "delete from pendaftaran where idwisuda=?";
+        int option = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin menghapus ini ?","Confirm Delete",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if (option == JOptionPane.YES_OPTION)
+        {
+            try {
+                con = config.configDB();
+                pst = con.prepareStatement(sql);
+                pst.setString(1, idwisuda);
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Berhasil Delete data");
+                load_table();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Tidak jadi Delete");
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void btHapuss1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHapuss1ActionPerformed
- CardLayout cl = (CardLayout) root.getLayout();
-        cl.show(root, "menu");       
-    }//GEN-LAST:event_btHapuss1ActionPerformed
-
-    private void btInputt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputt2ActionPerformed
+    private void btnHpsHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHpsHomeActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
+        clear();
+        cl.show(root, "menu");       
+    }//GEN-LAST:event_btnHpsHomeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         CardLayout cl = (CardLayout) root.getLayout();
+         clear();
         cl.show(root, "menu");
         // TODO add your handling code here:
-    }//GEN-LAST:event_btInputt2ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btInputt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputt3ActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
@@ -617,11 +750,140 @@ public class isipendaftaran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btInputt3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         CardLayout cl = (CardLayout) root.getLayout();
-        cl.show(root, "menu");
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        CardLayout cl = (CardLayout) root.getLayout();
+        String sql = "insert into pendaftaran(nrp, namamhs, prodi, dosen, namadosen, ipk, judul) values(?,?,?,?,?,?,?)";
+        try {
+            String prodi = cbProdi.getSelectedItem().toString();
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, labelMhs.getText());
+            pst.setString(2, txtNrpMhs.getText());
+            pst.setString(3, prodi);
+            pst.setString(4, labelDosen.getText());
+            pst.setString(5, txtNipDosen.getText());
+            pst.setString(6, txtIpk.getText());
+            pst.setString(7, txtJudul.getText());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data berhasil di input");
+            load_table();
+            cl.show(root, "menu");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnVerifMhsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifMhsActionPerformed
+        // TODO add your handling code here:
+        String sql = "select nrp from mahasiswa where nama_mahasiswa =?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, txtNrpMhs.getText());
+            rs = pst.executeQuery();
+            if (rs.next())
+            {
+                labelMhs.setText(rs.getString(1));
+                JOptionPane.showMessageDialog(null, "Data Terveifikasi");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Data salah atau tidak terdaftar");
+                txtNrpMhs.setText("");
+                labelMhs.setText("");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnVerifMhsActionPerformed
+
+    private void btnVerifDsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifDsnActionPerformed
+        // TODO add your handling code here:
+        String sql = "select nip from dosen where nmDosen = ?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, txtNipDosen.getText());
+            rs = pst.executeQuery();
+            if(rs.next())
+            {
+                labelDosen.setText(rs.getString(1));
+                JOptionPane.showMessageDialog(null, "Data Terveifikasi");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Data salah atau tidak terdaftar");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnVerifDsnActionPerformed
+
+    private void txtIpkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIpkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIpkActionPerformed
+
+    private void tbEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEditMouseClicked
+        // TODO add your handling code here:
+        int baris = tbEdit.rowAtPoint(evt.getPoint());
+        idwisuda = tbEdit.getValueAt(baris, 1).toString();
+        nrp = tbEdit.getValueAt(baris, 2).toString();
+        namamhs = tbEdit.getValueAt(baris, 3).toString();
+        prodi = tbEdit.getValueAt(baris, 4).toString();
+        nip = tbEdit.getValueAt(baris, 5).toString();
+        namadsn = tbEdit.getValueAt(baris, 6).toString();
+        ipk = tbEdit.getValueAt(baris, 7).toString();
+        judul = tbEdit.getValueAt(baris, 8).toString();
+        
+        txtNrpMhs.setText(namamhs);
+        labelMhs.setText(nrp);
+        txtNipDosen.setText(namadsn);
+        labelDosen.setText(nip);
+        txtIpk.setText(ipk);
+        txtJudul.setText(judul);
+        cbProdi.setSelectedItem(prodi);
+    }//GEN-LAST:event_tbEditMouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) root.getLayout();
+        String sql = "update pendaftaran set nrp=?, namamhs=?, prodi=?, dosen=?, namadosen=?, ipk=?, judul=? where idwisuda=?";
+        try {
+            String prodi = cbProdi.getSelectedItem().toString();
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, labelMhs.getText());
+            pst.setString(2, txtNrpMhs.getText());
+            pst.setString(3, prodi);
+            pst.setString(4, labelDosen.getText());
+            pst.setString(5, txtNipDosen.getText());
+            pst.setString(6, txtIpk.getText());
+            pst.setString(7, txtJudul.getText());
+            pst.setString(8, idwisuda);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Berhasil Edit Data");
+            load_table();
+            cl.show(root, "menu");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void tbHapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHapusMouseClicked
+        // TODO add your handling code here:
+        int baris = tbEdit.rowAtPoint(evt.getPoint());
+        idwisuda = tbEdit.getValueAt(baris, 1).toString();
+        nrp = tbEdit.getValueAt(baris, 2).toString();
+        namamhs = tbEdit.getValueAt(baris, 3).toString();
+        prodi = tbEdit.getValueAt(baris, 4).toString();
+        nip = tbEdit.getValueAt(baris, 5).toString();
+        namadsn = tbEdit.getValueAt(baris, 6).toString();
+        ipk = tbEdit.getValueAt(baris, 7).toString();
+        judul = tbEdit.getValueAt(baris, 8).toString();
+    }//GEN-LAST:event_tbHapusMouseClicked
 
     /**
      * @param args the command line arguments
@@ -665,19 +927,25 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JButton btEditt;
     private javax.swing.JButton btHapus;
     private javax.swing.JButton btHapus1;
-    private javax.swing.JButton btHapuss;
-    private javax.swing.JButton btHapuss1;
     private javax.swing.JButton btInput;
     private javax.swing.JButton btInputt;
-    private javax.swing.JButton btInputt1;
-    private javax.swing.JButton btInputt2;
     private javax.swing.JButton btInputt3;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnHpsHome;
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnVerifDsn;
+    private javax.swing.JButton btnVerifMhs;
+    private javax.swing.JComboBox<String> cbProdi;
     private javax.swing.JPanel input;
     private javax.swing.JPanel input1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -689,16 +957,17 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblnrp;
+    private javax.swing.JLabel labelDosen;
+    private javax.swing.JLabel labelMhs;
     private javax.swing.JPanel menutama;
     private javax.swing.JPanel root;
     private javax.swing.JTable tbEdit;
     private javax.swing.JTable tbHapus;
-    private javax.swing.JTextField txipk;
-    private javax.swing.JTextField txjudul;
-    private javax.swing.JTextField txnrp;
+    private javax.swing.JTextField txtIpk;
+    private javax.swing.JTextField txtJudul;
+    private javax.swing.JTextField txtNipDosen;
+    private javax.swing.JTextField txtNrpMhs;
     // End of variables declaration//GEN-END:variables
 }
