@@ -679,7 +679,7 @@ public class isipendaftaran extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            String jrmxlFile ="src/Report/reportpendaftaran.jrxml";
+            String jrmxlFile ="src/Report/pendaftaranReport.jrxml";
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mahasiswa_sakti", "root", "");
             HashMap param = new HashMap();
             JasperReport jspR = JasperCompileManager.compileReport(jrmxlFile);
