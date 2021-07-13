@@ -157,7 +157,7 @@ ResultSet rs;
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        String sql="select * from admin where username=? and password=?";
+        String sql="select * from user where username=? and password=?";
         try {
             con = config.configDB();
             pst = con.prepareStatement(sql);
@@ -166,13 +166,25 @@ ResultSet rs;
             rs = pst.executeQuery();
             if (rs.next())
             {
-                String name = rs.getString("nmAdmin");
-                JOptionPane.showMessageDialog(root, "Berhasil Login");
-                this.dispose();
-                landingpage lp = new landingpage();
-                landingpage.lbUser.setText(name);
-                landingpage.lbUser.setVisible(true);
-                lp.setVisible(true);
+              if(rs.getString("role").equals("admin")){
+                    String name = rs.getString("nmuser");
+                    JOptionPane.showMessageDialog(root, "Berhasil Login");
+                    this.dispose();
+                    landingpage lp = new landingpage();
+                    landingpage.lbUser.setText(name);
+                    landingpage.lbUser.setVisible(true);
+                    lp.setVisible(true);
+              }
+              else if(rs.getString("role").equals("user"))
+              {
+                    String nrp = rs.getString("username");
+                    JOptionPane.showMessageDialog(root, "Berhasil Login");
+                    this.dispose();
+                    pendaftaran pdf = new pendaftaran();
+                    pendaftaran.lbnrp.setText(nrp);
+                    pendaftaran.lbnrp.setVisible(false);
+                    pdf.setVisible(true);
+              }
                 
             }
             else

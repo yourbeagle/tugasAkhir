@@ -25,7 +25,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Realfi
  */
 public class isipendaftaran extends javax.swing.JFrame {
-    String idwisuda,nrp,namamhs,nip,namadsn,prodi,ipk,judul;
+    String idwisuda,nrp,namamhs,nip,namadsn,prodi,ipk,judul,status;
     Connection con;
     PreparedStatement pst;
     Statement stm;
@@ -36,6 +36,8 @@ public class isipendaftaran extends javax.swing.JFrame {
     public isipendaftaran() {
         initComponents();
         load_table();
+        
+        lbPhoto.setVisible(false);
     }
 
     /**
@@ -55,6 +57,7 @@ public class isipendaftaran extends javax.swing.JFrame {
         txtIpk.setText("");
         txtJudul.setText("");
         cbProdi.setSelectedIndex(0);
+        cbStatus.setSelectedIndex(0);
     }
     
     public void Edit()
@@ -78,6 +81,30 @@ public class isipendaftaran extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+    public void hiddenStatus()
+    {
+        String sql = "select status,buktipembayaran from pendaftaran where idwisuda=?";
+        try {
+            con = config.configDB();
+            pst = con.prepareStatement(sql);
+            pst.setString(1, idwisuda);
+            rs = pst.executeQuery();
+            if (rs.next())
+            {
+                if(rs.getString("status") == null && rs.getString("buktipembayaran") == null)
+                { 
+                    lbStatus.setVisible(false);
+                    cbStatus.setVisible(false);
+                }
+                else if(rs.getString("status") != null && rs.getString("buktipembayaran") != null)
+                {
+                    lbStatus.setVisible(true);
+                    cbStatus.setVisible(true);
+                }
+            }
+        } catch (Exception e) {
+        }
+    }
     
     public void load_table()
     {
@@ -91,6 +118,9 @@ public class isipendaftaran extends javax.swing.JFrame {
         model.addColumn("Nama Dosen");
         model.addColumn("IPK");
         model.addColumn("Judul");
+        model.addColumn("foto");
+        model.addColumn("Bukti");
+        model.addColumn("Status");
         try {
             int no = 1;
             String sql = "select * from pendaftaran";
@@ -103,7 +133,7 @@ public class isipendaftaran extends javax.swing.JFrame {
                 model.addRow(
                 new Object[]
                 {
-                    no++,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                    no++,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
                 }
                 );
             }
@@ -140,6 +170,7 @@ public class isipendaftaran extends javax.swing.JFrame {
         labelDosen = new javax.swing.JLabel();
         btnVerifMhs = new javax.swing.JButton();
         btnVerifDsn = new javax.swing.JButton();
+        lbPhoto = new javax.swing.JLabel();
         input1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
@@ -152,6 +183,8 @@ public class isipendaftaran extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbProdi = new javax.swing.JComboBox<>();
         btnEdit = new javax.swing.JButton();
+        lbStatus = new javax.swing.JLabel();
+        cbStatus = new javax.swing.JComboBox<>();
         MilehEdit = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -168,6 +201,11 @@ public class isipendaftaran extends javax.swing.JFrame {
         btnHpsHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         root.setLayout(new java.awt.CardLayout());
 
@@ -309,6 +347,8 @@ public class isipendaftaran extends javax.swing.JFrame {
             }
         });
 
+        lbPhoto.setText("jLabel5");
+
         javax.swing.GroupLayout inputLayout = new javax.swing.GroupLayout(input);
         input.setLayout(inputLayout);
         inputLayout.setHorizontalGroup(
@@ -330,6 +370,7 @@ public class isipendaftaran extends javax.swing.JFrame {
             .addGroup(inputLayout.createSequentialGroup()
                 .addGap(246, 246, 246)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbPhoto)
                     .addComponent(jLabel7)
                     .addComponent(jLabel1)
                     .addGroup(inputLayout.createSequentialGroup()
@@ -367,7 +408,9 @@ public class isipendaftaran extends javax.swing.JFrame {
                     .addComponent(txtNipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelDosen)
                     .addComponent(btnVerifDsn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(lbPhoto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -423,6 +466,10 @@ public class isipendaftaran extends javax.swing.JFrame {
             }
         });
 
+        lbStatus.setText("Status");
+
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Status", "Pending", "Sukses" }));
+
         javax.swing.GroupLayout input1Layout = new javax.swing.GroupLayout(input1);
         input1.setLayout(input1Layout);
         input1Layout.setHorizontalGroup(
@@ -453,11 +500,13 @@ public class isipendaftaran extends javax.swing.JFrame {
                     .addGroup(input1Layout.createSequentialGroup()
                         .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(85, 85, 85)
                         .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtJudul, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         input1Layout.setVerticalGroup(
@@ -479,7 +528,11 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(input1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -693,6 +746,7 @@ public class isipendaftaran extends javax.swing.JFrame {
     private void btInputtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputtActionPerformed
         CardLayout cl = (CardLayout) root.getLayout();
         Edit();
+//        hiddenStatus();
         cl.show(root, "step2");
     }//GEN-LAST:event_btInputtActionPerformed
 
@@ -753,7 +807,7 @@ public class isipendaftaran extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
-        String sql = "insert into pendaftaran(nrp, namamhs, prodi, dosen, namadosen, ipk, judul) values(?,?,?,?,?,?,?)";
+        String sql = "insert into pendaftaran(nrp, namamhs, prodi, dosen, namadosen, ipk, judul, foto) values(?,?,?,?,?,?,?,?)";
         try {
             String prodi = cbProdi.getSelectedItem().toString();
             con = config.configDB();
@@ -765,6 +819,7 @@ public class isipendaftaran extends javax.swing.JFrame {
             pst.setString(5, txtNipDosen.getText());
             pst.setString(6, txtIpk.getText());
             pst.setString(7, txtJudul.getText());
+            pst.setString(8, lbPhoto.getText());
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data berhasil di input");
             load_table();
@@ -778,15 +833,19 @@ public class isipendaftaran extends javax.swing.JFrame {
 
     private void btnVerifMhsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifMhsActionPerformed
         // TODO add your handling code here:
-        String sql = "select nrp from mahasiswa where nama_mahasiswa =?";
+        String sql = "select nrp,photopath,nama_mahasiswa from mahasiswa where nama_mahasiswa like ?";
         try {
             con = config.configDB();
             pst = con.prepareStatement(sql);
-            pst.setString(1, txtNrpMhs.getText());
+            pst.setString(1, "%" + txtNrpMhs.getText() + "%");
             rs = pst.executeQuery();
             if (rs.next())
             {
+                String photo = rs.getString("photopath");
+                lbPhoto.setText(photo);
+                lbPhoto.setVisible(false);
                 labelMhs.setText(rs.getString(1));
+                txtNrpMhs.setText(rs.getString("nama_mahasiswa"));
                 JOptionPane.showMessageDialog(null, "Data Terveifikasi");
             }
             else
@@ -794,6 +853,7 @@ public class isipendaftaran extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Data salah atau tidak terdaftar");
                 txtNrpMhs.setText("");
                 labelMhs.setText("");
+                lbPhoto.setText("");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -837,7 +897,9 @@ public class isipendaftaran extends javax.swing.JFrame {
         namadsn = tbEdit.getValueAt(baris, 6).toString();
         ipk = tbEdit.getValueAt(baris, 7).toString();
         judul = tbEdit.getValueAt(baris, 8).toString();
-        
+        status = tbEdit.getValueAt(baris, 11).toString();
+                
+                
         txtNrpMhs.setText(namamhs);
         labelMhs.setText(nrp);
         txtNipDosen.setText(namadsn);
@@ -845,14 +907,16 @@ public class isipendaftaran extends javax.swing.JFrame {
         txtIpk.setText(ipk);
         txtJudul.setText(judul);
         cbProdi.setSelectedItem(prodi);
+        cbStatus.setSelectedItem(status);
     }//GEN-LAST:event_tbEditMouseClicked
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         CardLayout cl = (CardLayout) root.getLayout();
-        String sql = "update pendaftaran set nrp=?, namamhs=?, prodi=?, dosen=?, namadosen=?, ipk=?, judul=? where idwisuda=?";
+        String sql = "update pendaftaran set nrp=?, namamhs=?, prodi=?, dosen=?, namadosen=?, ipk=?, judul=?, status=? where idwisuda=?";
         try {
             String prodi = cbProdi.getSelectedItem().toString();
+            String status = cbStatus.getSelectedItem().toString();
             con = config.configDB();
             pst = con.prepareStatement(sql);
             pst.setString(1, labelMhs.getText());
@@ -862,7 +926,8 @@ public class isipendaftaran extends javax.swing.JFrame {
             pst.setString(5, txtNipDosen.getText());
             pst.setString(6, txtIpk.getText());
             pst.setString(7, txtJudul.getText());
-            pst.setString(8, idwisuda);
+            pst.setString(8, status);
+            pst.setString(9, idwisuda);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Berhasil Edit Data");
             load_table();
@@ -884,6 +949,11 @@ public class isipendaftaran extends javax.swing.JFrame {
         ipk = tbEdit.getValueAt(baris, 7).toString();
         judul = tbEdit.getValueAt(baris, 8).toString();
     }//GEN-LAST:event_tbHapusMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        hiddenStatus();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -938,6 +1008,7 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JButton btnVerifDsn;
     private javax.swing.JButton btnVerifMhs;
     private javax.swing.JComboBox<String> cbProdi;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JPanel input;
     private javax.swing.JPanel input1;
     private javax.swing.JButton jButton1;
@@ -961,6 +1032,8 @@ public class isipendaftaran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelDosen;
     private javax.swing.JLabel labelMhs;
+    private javax.swing.JLabel lbPhoto;
+    private javax.swing.JLabel lbStatus;
     private javax.swing.JPanel menutama;
     private javax.swing.JPanel root;
     private javax.swing.JTable tbEdit;
