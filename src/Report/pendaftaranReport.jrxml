@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="144"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select idwisuda,mahasiswa.NRP,mahasiswa.nama_mahasiswa,mahasiswa.prodi,dosen.nmdosen,ipk,judul FROM PENDAFTARAN INNER JOIN MAHASISWA ON PENDAFTARAN.NRP = MAHASISWA.NRP INNER JOIN DOSEN ON PENDAFTARAN.DOSEN = DOSEN.NIP;]]>
+		<![CDATA[select idwisuda,mahasiswa.NRP,mahasiswa.nama_mahasiswa,mahasiswa.prodi,dosen.nmdosen,ipk,judul,.pendaftaran.Status FROM PENDAFTARAN INNER JOIN MAHASISWA ON PENDAFTARAN.NRP = MAHASISWA.NRP INNER JOIN DOSEN ON PENDAFTARAN.DOSEN = DOSEN.NIP;]]>
 	</queryString>
 	<field name="idwisuda" class="java.lang.Integer"/>
 	<field name="NRP" class="java.lang.String"/>
@@ -13,6 +13,7 @@
 	<field name="nmdosen" class="java.lang.String"/>
 	<field name="ipk" class="java.lang.String"/>
 	<field name="judul" class="java.lang.String"/>
+	<field name="Status" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -54,7 +55,7 @@
 				<text><![CDATA[prodi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="11" width="102" height="20"/>
+				<reportElement x="282" y="11" width="64" height="20"/>
 				<textElement/>
 				<text><![CDATA[nmdosen]]></text>
 			</staticText>
@@ -64,57 +65,70 @@
 				<text><![CDATA[idwisuda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="384" y="11" width="38" height="20"/>
+				<reportElement x="346" y="11" width="38" height="20"/>
 				<textElement/>
 				<text><![CDATA[ipk]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="422" y="12" width="100" height="20"/>
+				<reportElement x="384" y="11" width="80" height="20"/>
 				<textElement/>
 				<text><![CDATA[judul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="11" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Status]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="98" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="50" width="555" height="1"/>
-			</line>
+		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="64" y="30" width="62" height="20"/>
+				<reportElement x="65" y="11" width="62" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{NRP}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="126" y="30" width="100" height="20"/>
+				<reportElement x="127" y="11" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nama_mahasiswa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="226" y="30" width="56" height="20"/>
+				<reportElement x="227" y="11" width="56" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{prodi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="282" y="30" width="102" height="20"/>
+				<reportElement x="283" y="11" width="63" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nmdosen}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="30" width="64" height="20"/>
+				<reportElement x="1" y="11" width="64" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{idwisuda}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="383" y="30" width="38" height="20"/>
+				<reportElement x="346" y="11" width="38" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ipk}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="421" y="30" width="134" height="20"/>
+				<reportElement x="384" y="11" width="80" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{judul}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="464" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Status}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="34" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="0" width="554" height="1"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

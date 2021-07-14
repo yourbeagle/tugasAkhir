@@ -329,9 +329,9 @@ public class isipendaftaran extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Dosen");
 
-        labelMhs.setText("jLabel2");
+        labelMhs.setText("NRP");
 
-        labelDosen.setText("jLabel5");
+        labelDosen.setText("NIP");
 
         btnVerifMhs.setText("Verifikasi");
         btnVerifMhs.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +369,7 @@ public class isipendaftaran extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(inputLayout.createSequentialGroup()
                 .addGap(246, 246, 246)
-                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbPhoto)
                     .addComponent(jLabel7)
                     .addComponent(jLabel1)
@@ -378,14 +378,14 @@ public class isipendaftaran extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnVerifDsn)
                         .addGap(18, 18, 18)
-                        .addComponent(labelDosen))
+                        .addComponent(labelDosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(inputLayout.createSequentialGroup()
                         .addComponent(txtNrpMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVerifMhs)
                         .addGap(18, 18, 18)
-                        .addComponent(labelMhs)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 219, Short.MAX_VALUE))
         );
         inputLayout.setVerticalGroup(
             inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,18 +399,18 @@ public class isipendaftaran extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNrpMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMhs)
+                    .addComponent(labelMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerifMhs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNipDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDosen)
+                    .addComponent(labelDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerifDsn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(lbPhoto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btInputt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -952,7 +952,8 @@ public class isipendaftaran extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        hiddenStatus();
+       //
+       hiddenStatus();
     }//GEN-LAST:event_formWindowActivated
 
     /**

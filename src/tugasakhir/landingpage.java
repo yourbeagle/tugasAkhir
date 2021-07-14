@@ -46,7 +46,7 @@ ResultSet rs;
         mnKelas = new javax.swing.JMenu();
         mnDosen = new javax.swing.JMenu();
         mnMatakuliah = new javax.swing.JMenu();
-        mnJadwal = new javax.swing.JMenu();
+        mnWisuda = new javax.swing.JMenu();
         mnLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -169,13 +169,13 @@ ResultSet rs;
         });
         jMenuBar2.add(mnMatakuliah);
 
-        mnJadwal.setText("Jadwal");
-        mnJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnWisuda.setText("Pendaftaran Wisuda");
+        mnWisuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnJadwalMouseClicked(evt);
+                mnWisudaMouseClicked(evt);
             }
         });
-        jMenuBar2.add(mnJadwal);
+        jMenuBar2.add(mnWisuda);
 
         mnLogout.setText("Logout");
         mnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,11 +240,11 @@ ResultSet rs;
         mhw.setVisible(true);
     }//GEN-LAST:event_mnMhwaMouseClicked
 
-    private void mnJadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnJadwalMouseClicked
+    private void mnWisudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnWisudaMouseClicked
         this.dispose();
-        jadwal mhw = new jadwal();
+        isipendaftaran mhw = new isipendaftaran();
         mhw.setVisible(true);
-    }//GEN-LAST:event_mnJadwalMouseClicked
+    }//GEN-LAST:event_mnWisudaMouseClicked
 
     
     /**
@@ -317,10 +317,10 @@ ResultSet rs;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel lbUser;
     private javax.swing.JMenu mnDosen;
-    private javax.swing.JMenu mnJadwal;
     private javax.swing.JMenu mnKelas;
     private javax.swing.JMenu mnLogout;
     private javax.swing.JMenu mnMatakuliah;
     private javax.swing.JMenu mnMhwa;
+    private javax.swing.JMenu mnWisuda;
     // End of variables declaration//GEN-END:variables
 }
